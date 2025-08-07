@@ -180,7 +180,6 @@ const ContactPage: React.FC = () => {
                   <li>• Formation personnalisée jusqu'à maîtrise</li>
                   <li>• Support post-formation illimité</li>
                   <li>• Hébergement + maintenance 1 an inclus</li>
-                  <li>• Satisfaction client ou remboursement</li>
                 </ul>
               </div>
 
