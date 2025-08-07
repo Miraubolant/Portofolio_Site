@@ -66,23 +66,23 @@ const ContactPage: React.FC = () => {
   const guarantees = [
     {
       icon: <CheckCircle size={24} />,
-      title: 'Formation jusqu\'à autonomie',
-      description: 'Support inclus jusqu\'à votre maîtrise complète'
+      title: 'Formation personnalisée incluse',
+      description: 'Support illimité jusqu\'à votre maîtrise complète'
     },
     {
       icon: <Clock size={24} />,
-      title: 'Réponse sous 2h garantie',
-      description: '7j/7 24h/24 dans votre fuseau horaire'
+      title: 'Réponse sous 48h max',
+      description: '7j/7 disponible pour vos questions'
     },
     {
       icon: <Globe size={24} />,
-      title: 'Service France entière',
-      description: 'Clients formés dans toute la France'
+      title: 'Couverture nationale',
+      description: 'Formation à distance dans toute la France'
     },
     {
       icon: <MapPin size={24} />,
-      title: 'Formation à distance',
-      description: 'Visio, WhatsApp, email - comme vous préférez'
+      title: 'Méthode éprouvée',
+      description: '150+ sites livrés avec interface admin simple'
     }
   ];
 
@@ -180,6 +180,7 @@ const ContactPage: React.FC = () => {
                   <li>• Formation personnalisée jusqu'à maîtrise</li>
                   <li>• Support post-formation illimité</li>
                   <li>• Hébergement + maintenance 1 an inclus</li>
+                  <li>• Satisfaction client ou remboursement</li>
                 </ul>
               </div>
 
