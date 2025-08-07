@@ -1,7 +1,7 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import Presentation from '../components/Presentation';
-import AutonomySection from '../components/AutonomySection';
+import PremiumInterfaceDemo from '../components/PremiumInterfaceDemo';
 import ProcessTimeline from '../components/ProcessTimeline';
 import PortfolioPreview from '../components/PortfolioPreview';
 import AvailabilitySection from '../components/AvailabilitySection';
@@ -22,7 +22,7 @@ const HomePage: React.FC<HomePageProps> = ({
     <>
       <Hero onCtaClick={onHeroCtaClick} />
       <Presentation />
-      <AutonomySection />
+      <PremiumInterfaceDemo />
       <div id="process-timeline">
         <ProcessTimeline onDetailClick={onProcessDetailClick} />
       </div>
