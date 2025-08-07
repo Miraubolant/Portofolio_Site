@@ -129,7 +129,7 @@ const ServicesPage: React.FC = () => {
                       <h2 className="text-3xl font-bold text-primary">{service.title}</h2>
                       <div className="flex items-center space-x-4 mt-2">
                         <span className="bg-highlight-brown text-white px-3 py-1 rounded-full text-sm font-semibold">
-                          {service.price}
+                          Prix sur devis
                         </span>
                         <span className="bg-accent-green text-white px-3 py-1 rounded-full text-sm font-semibold">
                           {service.deliveryTime}
