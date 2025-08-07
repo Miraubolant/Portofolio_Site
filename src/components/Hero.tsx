@@ -30,11 +30,11 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
           {/* Logo Hero */}
-          <div className={`flex justify-center mb-8 transition-all duration-1000 ${
+          <div className={`flex justify-center mb-6 sm:mb-8 transition-all duration-1000 ${
             isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
           }`}>
-            <div className="w-20 h-20 bg-gradient-to-br from-accent-green to-highlight-brown rounded-2xl flex items-center justify-center shadow-2xl">
-              <span className="text-white font-bold text-2xl">VM</span>
+            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-accent-green to-highlight-brown rounded-2xl flex items-center justify-center shadow-2xl">
+              <span className="text-white font-bold text-xl sm:text-2xl">VM</span>
             </div>
           </div>
 
