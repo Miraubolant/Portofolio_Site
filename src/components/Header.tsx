@@ -15,6 +15,9 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
   const location = useLocation();
 
   useEffect(() => {
+    // Reset scroll state when location changes
+    setIsScrolled(false);
+    
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
       
@@ -26,7 +29,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const menuItems = [
     { id: 'home', label: 'Accueil', path: '/' },
