@@ -89,14 +89,15 @@ const ContactPage: React.FC = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-sand-light via-beige-gold to-sand-light relative overflow-hidden">
+      <section className="py-16 bg-gradient-to-br from-sand-light via-beige-gold to-sand-light relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute top-20 left-20 w-32 h-32 bg-accent-green/10 rounded-full blur-2xl"></div>
-          <div className="absolute bottom-20 right-20 w-48 h-48 bg-highlight-brown/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-10 left-10 w-64 h-64 bg-accent-green/10 rounded-full blur-3xl animate-pulse-soft"></div>
+          <div className="absolute bottom-10 right-10 w-80 h-80 bg-highlight-brown/10 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: '1s' }}></div>
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary/5 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
               Parlons de votre <span className="text-accent-green">autonomie web</span>
             </h1>
@@ -104,29 +105,37 @@ const ContactPage: React.FC = () => {
               Prêt(e) pour un site avec interface simple + formation incluse ? 
               Contactez-moi pour démarrer votre autonomie digitale !
             </p>
+            <div className="mt-8 flex justify-center space-x-4">
+              <div className="bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-accent-green/20">
+                <span className="text-accent-green font-semibold">✓ Devis personnalisé</span>
+              </div>
+              <div className="bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-highlight-brown/20">
+                <span className="text-highlight-brown font-semibold">✓ Réponse sous 48h</span>
+              </div>
+            </div>
           </div>
 
           {/* Quick Contact Methods */}
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
+          <div className="grid md:grid-cols-3 gap-6 mb-12">
             {contactMethods.map((method, index) => (
               <div
                 key={index}
-                className={`bg-white/70 backdrop-blur-sm p-8 rounded-2xl text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 ${
+                className={`group bg-white/80 backdrop-blur-sm p-6 rounded-2xl text-center hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-2 border border-white/50 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="inline-flex items-center justify-center w-16 h-16 bg-accent-green/10 rounded-full mb-6 text-accent-green">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-accent-green/10 to-highlight-brown/10 rounded-2xl mb-4 text-accent-green group-hover:scale-110 transition-transform duration-300">
                   {method.icon}
                 </div>
-                <h3 className="text-xl font-bold text-primary mb-3">{method.title}</h3>
-                <p className="text-primary/80 mb-2">{method.description}</p>
-                <p className="text-primary/60 text-sm mb-6">{method.available}</p>
+                <h3 className="text-lg font-bold text-primary mb-2">{method.title}</h3>
+                <p className="text-primary/80 mb-1 text-sm">{method.description}</p>
+                <p className="text-primary/60 text-xs mb-4">{method.available}</p>
                 <a
                   href={method.link}
                   target={method.link.startsWith('http') ? '_blank' : undefined}
                   rel={method.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  className={`inline-flex items-center justify-center w-full px-6 py-3 rounded-lg text-white font-semibold transition-all duration-300 transform hover:scale-105 ${method.color}`}
+                  className={`inline-flex items-center justify-center w-full px-4 py-2 rounded-lg text-white font-medium text-sm transition-all duration-300 transform hover:scale-105 ${method.color}`}
                 >
                   {method.action}
                 </a>
@@ -137,35 +146,39 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Main Contact Section */}
-      <section className="py-20 bg-white">
+      <section className="py-16 bg-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-48 h-48 bg-sand-light/20 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-64 h-64 bg-beige-gold/20 rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-start">
             {/* Contact Form */}
-            <div>
+            <div className="relative z-10">
               <h2 className="text-3xl font-bold text-primary mb-6">
-                Formulaire de Contact
+                Démarrons Votre Projet
               </h2>
               <p className="text-primary/80 mb-8">
-                Décrivez-moi votre projet et vos besoins d'autonomie. 
-                Je vous réponds avec un devis personnalisé sous 2h !
+                Décrivez-moi votre projet et vos besoins d'autonomie. Je vous réponds avec un 
+                <span className="font-semibold text-accent-green"> devis personnalisé sous 48h</span> !
               </p>
               <ContactForm />
             </div>
 
             {/* Contact Info & Guarantees */}
-            <div className="space-y-8">
+            <div className="space-y-6 relative z-10">
               <div>
                 <h3 className="text-2xl font-bold text-primary mb-6">
                   Pourquoi me choisir ?
                 </h3>
-                <div className="space-y-6">
+                <div className="space-y-4">
                   {guarantees.map((guarantee, index) => (
-                    <div key={index} className="flex items-start space-x-4">
-                      <div className="flex-shrink-0 w-12 h-12 bg-accent-green/10 rounded-lg flex items-center justify-center text-accent-green">
+                    <div key={index} className="flex items-start space-x-4 p-4 bg-white/50 rounded-xl hover:bg-white/80 transition-all duration-300 hover:shadow-lg">
+                      <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-accent-green/10 to-highlight-brown/10 rounded-lg flex items-center justify-center text-accent-green">
                         {guarantee.icon}
                       </div>
                       <div>
-                        <h4 className="font-semibold text-primary mb-1">{guarantee.title}</h4>
+                        <h4 className="font-semibold text-primary mb-1 text-sm">{guarantee.title}</h4>
                         <p className="text-primary/70 text-sm">{guarantee.description}</p>
                       </div>
                     </div>
@@ -173,7 +186,7 @@ const ContactPage: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-accent-green/10 to-highlight-brown/10 p-6 rounded-xl">
+              <div className="bg-gradient-to-br from-accent-green/10 to-highlight-brown/10 p-6 rounded-xl border border-accent-green/20">
                 <h4 className="font-semibold text-primary mb-3">Engagement Autonomie :</h4>
                 <ul className="space-y-2 text-primary/80 text-sm">
                   <li>• Interface admin ultra-simple garantie</li>
@@ -184,7 +197,7 @@ const ContactPage: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white border border-sand-light/50 p-6 rounded-xl">
+              <div className="bg-white/80 backdrop-blur-sm border border-sand-light/50 p-6 rounded-xl shadow-lg">
                 <h4 className="font-semibold text-primary mb-3">Disponibilité :</h4>
                 <div className="space-y-2 text-primary/80 text-sm">
                   <p><strong>Lundi - Dimanche :</strong> 8h - 20h (heure française)</p>
@@ -199,7 +212,11 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section ref={elementRef} className="py-20 bg-gradient-to-br from-beige-gold/30 to-sand-light">
+      <section ref={elementRef} className="py-16 bg-gradient-to-br from-beige-gold/30 to-sand-light relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 right-10 w-72 h-72 bg-accent-green/5 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-10 left-10 w-96 h-96 bg-highlight-brown/5 rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-primary mb-4">
@@ -210,16 +227,16 @@ const ContactPage: React.FC = () => {
             </p>
           </div>
 
-          <div className="space-y-6">
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
               <div
                 key={index}
-                className={`bg-white/70 backdrop-blur-sm p-6 rounded-xl transition-all duration-700 ${
+                className={`bg-white/80 backdrop-blur-sm p-6 rounded-xl border border-white/50 hover:shadow-lg transition-all duration-700 hover:border-accent-green/30 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <h4 className="font-semibold text-primary mb-3 text-lg">{faq.question}</h4>
+                <h4 className="font-semibold text-primary mb-3">{faq.question}</h4>
                 <p className="text-primary/80 leading-relaxed">{faq.answer}</p>
               </div>
             ))}
@@ -252,7 +269,11 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-primary text-white">
+      <section className="py-16 bg-gradient-to-br from-primary to-accent-green text-white relative overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-10 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
+          <div className="absolute bottom-20 left-20 w-48 h-48 bg-white/5 rounded-full blur-3xl"></div>
+        </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-4xl font-bold mb-6">
             Prêt(e) pour votre <span className="text-sand-light">autonomie digitale</span> ?
@@ -262,32 +283,32 @@ const ContactPage: React.FC = () => {
             Créons ensemble votre site autonome avec formation incluse !
           </p>
           
-          <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl mb-8">
-            <h3 className="text-2xl font-semibold mb-4">Ce que vous obtenez :</h3>
+          <div className="bg-white/10 backdrop-blur-sm p-6 rounded-2xl mb-8 border border-white/20">
+            <h3 className="text-xl font-semibold mb-4">Pack Autonomie Complète :</h3>
             <div className="grid md:grid-cols-2 gap-4 text-left">
               <div className="flex items-center space-x-3">
                 <CheckCircle className="text-sand-light flex-shrink-0" size={20} />
-                <span>Site professionnel complet</span>
+                <span className="text-sm">Site professionnel complet</span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="text-sand-light flex-shrink-0" size={20} />
-                <span>Interface admin ultra-simple</span>
+                <span className="text-sm">Interface admin ultra-simple</span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="text-sand-light flex-shrink-0" size={20} />
-                <span>Formation personnalisée incluse</span>
+                <span className="text-sm">Formation personnalisée incluse</span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="text-sand-light flex-shrink-0" size={20} />
-                <span>Support formation illimité</span>
+                <span className="text-sm">Support formation illimité</span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="text-sand-light flex-shrink-0" size={20} />
-                <span>Hébergement + maintenance 1 an</span>
+                <span className="text-sm">Hébergement + maintenance 1 an</span>
               </div>
               <div className="flex items-center space-x-3">
                 <CheckCircle className="text-sand-light flex-shrink-0" size={20} />
-                <span>Autonomie totale garantie</span>
+                <span className="text-sm">Autonomie totale garantie</span>
               </div>
             </div>
           </div>
@@ -297,16 +318,16 @@ const ContactPage: React.FC = () => {
               href="https://wa.me/33123456789"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center space-x-3 bg-green-500 text-white px-8 py-4 rounded-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-105 font-semibold text-lg"
+              className="flex items-center justify-center space-x-3 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-105 font-semibold"
             >
-              <MessageCircle size={24} />
+              <MessageCircle size={20} />
               <span>Démarrer maintenant</span>
             </a>
             <a
               href="mailto:victor@victormirault.com"
-              className="flex items-center justify-center space-x-3 bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg hover:bg-white/30 transition-all duration-300 transform hover:scale-105 font-semibold text-lg"
+              className="flex items-center justify-center space-x-3 bg-white/20 backdrop-blur-sm text-white px-6 py-3 rounded-lg hover:bg-white/30 transition-all duration-300 transform hover:scale-105 font-semibold"
             >
-              <Mail size={24} />
+              <Mail size={20} />
               <span>Email Direct</span>
             </a>
           </div>
