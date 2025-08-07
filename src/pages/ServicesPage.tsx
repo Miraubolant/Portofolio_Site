@@ -122,42 +122,42 @@ const ServicesPage: React.FC = () => {
                 {/* Content */}
                 <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
                   <div className="flex items-center space-x-4 mb-6">
-                    <div className="p-3 bg-accent-green/10 rounded-xl text-accent-green">
+                    <div className="p-2 sm:p-3 bg-accent-green/10 rounded-xl text-accent-green flex-shrink-0">
                       {service.icon}
                     </div>
                     <div>
-                      <h2 className="text-3xl font-bold text-primary">{service.title}</h2>
-                      <div className="flex items-center space-x-4 mt-2">
-                        <span className="bg-highlight-brown text-white px-3 py-1 rounded-full text-sm font-semibold">
+                      <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary">{service.title}</h2>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-4 mt-2 space-y-2 sm:space-y-0">
+                        <span className="bg-highlight-brown text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold inline-block w-fit">
                           Prix sur devis
                         </span>
-                        <span className="bg-accent-green text-white px-3 py-1 rounded-full text-sm font-semibold">
+                        <span className="bg-accent-green text-white px-3 py-1 rounded-full text-xs sm:text-sm font-semibold inline-block w-fit">
                           {service.deliveryTime}
                         </span>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-lg text-primary/80 mb-8">{service.description}</p>
+                  <p className="text-base sm:text-lg text-primary/80 mb-6 sm:mb-8">{service.description}</p>
 
-                  <div className="grid md:grid-cols-2 gap-4 mb-8">
+                  <div className="grid sm:grid-cols-2 gap-3 sm:gap-4 mb-6 sm:mb-8">
                     {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center space-x-3">
-                        <CheckCircle className="text-accent-green flex-shrink-0" size={20} />
-                        <span className="text-primary/80">{feature}</span>
+                      <div key={featureIndex} className="flex items-start space-x-2 sm:space-x-3">
+                        <CheckCircle className="text-accent-green flex-shrink-0 mt-0.5" size={16} />
+                        <span className="text-sm sm:text-base text-primary/80">{feature}</span>
                       </div>
                     ))}
                   </div>
 
-                  <div className="bg-gradient-to-r from-sand-light/50 to-beige-gold/50 p-6 rounded-xl">
-                    <h4 className="font-semibold text-primary mb-3">Processus optimisé :</h4>
-                    <div className="space-y-2">
+                  <div className="bg-gradient-to-r from-sand-light/50 to-beige-gold/50 p-4 sm:p-6 rounded-xl">
+                    <h4 className="font-semibold text-primary mb-3 text-sm sm:text-base">Processus optimisé :</h4>
+                    <div className="space-y-2 sm:space-y-3">
                       {service.process.map((step, stepIndex) => (
-                        <div key={stepIndex} className="flex items-center space-x-3">
-                          <div className="w-6 h-6 bg-accent-green text-white rounded-full flex items-center justify-center text-xs font-bold">
+                        <div key={stepIndex} className="flex items-start space-x-2 sm:space-x-3">
+                          <div className="w-5 h-5 sm:w-6 sm:h-6 bg-accent-green text-white rounded-full flex items-center justify-center text-xs font-bold flex-shrink-0 mt-0.5">
                             {stepIndex + 1}
                           </div>
-                          <span className="text-primary/80">{step}</span>
+                          <span className="text-sm sm:text-base text-primary/80">{step}</span>
                         </div>
                       ))}
                     </div>
@@ -166,23 +166,23 @@ const ServicesPage: React.FC = () => {
 
                 {/* Visual */}
                 <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <div className="bg-gradient-to-br from-accent-green/10 to-highlight-brown/10 p-8 rounded-2xl">
-                    <div className="bg-white rounded-xl shadow-lg p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <h4 className="font-semibold text-primary">Interface Admin</h4>
-                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs">
+                  <div className="bg-gradient-to-br from-accent-green/10 to-highlight-brown/10 p-4 sm:p-6 lg:p-8 rounded-2xl">
+                    <div className="bg-white rounded-xl shadow-lg p-4 sm:p-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 space-y-2 sm:space-y-0">
+                        <h4 className="font-semibold text-primary text-sm sm:text-base">Interface Admin</h4>
+                        <span className="bg-green-100 text-green-800 px-2 py-1 rounded-full text-xs w-fit">
                           Simple & Intuitive
                         </span>
                       </div>
-                      <div className="space-y-3">
+                      <div className="space-y-2 sm:space-y-3">
                         <div className="h-4 bg-accent-green/20 rounded"></div>
                         <div className="h-4 bg-highlight-brown/20 rounded w-3/4"></div>
                         <div className="h-4 bg-accent-green/20 rounded w-1/2"></div>
                       </div>
-                      <div className="mt-6 text-center">
-                        <div className="inline-flex items-center space-x-2 bg-accent-green text-white px-4 py-2 rounded-lg">
-                          <CheckCircle size={16} />
-                          <span className="text-sm">Formation incluse</span>
+                      <div className="mt-4 sm:mt-6 text-center">
+                        <div className="inline-flex items-center space-x-2 bg-accent-green text-white px-3 sm:px-4 py-2 rounded-lg">
+                          <CheckCircle size={14} />
+                          <span className="text-xs sm:text-sm">Formation incluse</span>
                         </div>
                       </div>
                     </div>

@@ -176,9 +176,9 @@ const PortfolioPreview: React.FC<PortfolioPreviewProps> = ({ onViewAllClick }) =
         }`}>
           {/* Featured Project Display */}
           <div className="relative bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden mb-12 border border-white/50">
-            <div className="grid lg:grid-cols-2 gap-0">
+            <div className="grid lg:grid-cols-2 gap-0 min-h-[400px] lg:min-h-[500px]">
               {/* Project Image */}
-              <div className="relative h-96 lg:h-auto overflow-hidden">
+              <div className="relative h-64 sm:h-80 lg:h-auto overflow-hidden">
                 <LazyImage
                   src={currentProject.image}
                   alt={currentProject.title}
@@ -188,29 +188,29 @@ const PortfolioPreview: React.FC<PortfolioPreviewProps> = ({ onViewAllClick }) =
                 
                 {/* Floating Badges */}
                 <div className="absolute top-6 left-6">
-                  <span className="bg-accent-green text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                  <span className="bg-accent-green text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
                     Interface admin incluse
                   </span>
                 </div>
                 
                 <div className="absolute top-6 right-6">
-                  <span className="bg-white/90 text-primary px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                  <span className="bg-white/90 text-primary px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold shadow-lg">
                     {currentProject.deliveryTime}
                   </span>
                 </div>
 
                 {/* Autonomy Stats Overlay */}
-                <div className="absolute bottom-6 left-6 right-6">
-                  <div className="bg-white/95 backdrop-blur-sm p-4 rounded-2xl shadow-xl">
-                    <div className="grid grid-cols-2 gap-4 text-center">
+                <div className="absolute bottom-4 sm:bottom-6 left-4 sm:left-6 right-4 sm:right-6">
+                  <div className="bg-white/95 backdrop-blur-sm p-3 sm:p-4 rounded-2xl shadow-xl">
+                    <div className="grid grid-cols-2 gap-2 sm:gap-4 text-center">
                       <div>
-                        <div className={`text-2xl font-bold ${currentProject.accentColor} mb-1`}>
+                        <div className={`text-lg sm:text-2xl font-bold ${currentProject.accentColor} mb-1`}>
                           {currentProject.autonomyLevel}
                         </div>
                         <div className="text-xs text-primary/70">Autonomie atteinte</div>
                       </div>
                       <div>
-                        <div className="text-2xl font-bold text-highlight-brown mb-1">
+                        <div className="text-lg sm:text-2xl font-bold text-highlight-brown mb-1">
                           {currentProject.formationTime}
                         </div>
                         <div className="text-xs text-primary/70">Formation</div>
@@ -221,50 +221,50 @@ const PortfolioPreview: React.FC<PortfolioPreviewProps> = ({ onViewAllClick }) =
               </div>
 
               {/* Project Details */}
-              <div className="p-8 lg:p-12 flex flex-col justify-center">
-                <div className="flex items-center justify-between mb-4">
-                  <span className={`px-3 py-1 rounded-full text-sm font-semibold ${currentProject.accentColor} bg-current/10`}>
+              <div className="p-6 sm:p-8 lg:p-12 flex flex-col justify-center">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 space-y-2 sm:space-y-0">
+                  <span className={`px-3 py-1 rounded-full text-xs sm:text-sm font-semibold ${currentProject.accentColor} bg-current/10 w-fit`}>
                     {currentProject.type}
                   </span>
-                  <div className="flex space-x-2">
+                  <div className="flex space-x-2 sm:space-x-3">
                     <button className="p-2 bg-accent-green/10 rounded-full hover:bg-accent-green/20 transition-colors duration-200">
-                      <ExternalLink size={18} className="text-accent-green" />
+                      <ExternalLink size={16} className="text-accent-green" />
                     </button>
                     <button className="p-2 bg-highlight-brown/10 rounded-full hover:bg-highlight-brown/20 transition-colors duration-200">
-                      <Settings size={18} className="text-highlight-brown" />
+                      <Settings size={16} className="text-highlight-brown" />
                     </button>
                   </div>
                 </div>
 
-                <h3 className="text-3xl font-bold text-primary mb-4">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-primary mb-4">
                   {currentProject.title}
                 </h3>
 
                 {/* Features */}
-                <div className="space-y-3 mb-6">
+                <div className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
                   {currentProject.features.map((feature, index) => (
-                    <div key={index} className="flex items-center space-x-3">
+                    <div key={index} className="flex items-start space-x-2 sm:space-x-3">
                       <div className="w-2 h-2 bg-accent-green rounded-full"></div>
-                      <span className="text-primary/80">{feature}</span>
+                      <span className="text-sm sm:text-base text-primary/80">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 {/* Testimonial */}
-                <div className="bg-gradient-to-r from-sand-light/50 to-beige-gold/50 p-6 rounded-2xl mb-6">
+                <div className="bg-gradient-to-r from-sand-light/50 to-beige-gold/50 p-4 sm:p-6 rounded-2xl mb-4 sm:mb-6">
                   <div className="flex items-center mb-3">
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} size={16} className="text-yellow-400 fill-current" />
+                      <Star key={i} size={14} className="text-yellow-400 fill-current" />
                     ))}
                   </div>
-                  <p className="text-primary/80 italic mb-3 leading-relaxed">
+                  <p className="text-sm sm:text-base text-primary/80 italic mb-3 leading-relaxed">
                     "{currentProject.testimonial}"
                   </p>
-                  <p className="text-primary/60 font-medium">- {currentProject.client}</p>
+                  <p className="text-sm text-primary/60 font-medium">- {currentProject.client}</p>
                 </div>
 
                 {/* Action Button */}
-                <button className="bg-gradient-to-r from-accent-green to-highlight-brown text-white px-6 py-3 rounded-xl font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
+                <button className="bg-gradient-to-r from-accent-green to-highlight-brown text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl text-sm sm:text-base font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                   Voir le projet complet
                 </button>
               </div>

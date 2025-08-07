@@ -176,7 +176,7 @@ const PortfolioPage: React.FC = () => {
                 onMouseLeave={() => setHoveredProject(null)}
               >
                 {/* Image */}
-                <div className="relative h-64 overflow-hidden">
+                <div className="relative h-48 sm:h-56 lg:h-64 overflow-hidden">
                   <LazyImage
                     src={project.image}
                     alt={project.title}
@@ -186,13 +186,13 @@ const PortfolioPage: React.FC = () => {
                   
                   {/* Badges */}
                   <div className="absolute top-3 left-3">
-                    <span className="bg-accent-green text-white px-3 py-1 rounded-full text-xs font-semibold">
+                    <span className="bg-accent-green text-white px-2 sm:px-3 py-1 rounded-full text-xs font-semibold">
                       Interface admin incluse
                     </span>
                   </div>
                   
                   <div className="absolute top-3 right-3">
-                    <span className="bg-white/90 text-primary px-3 py-1 rounded-full text-xs font-semibold">
+                    <span className="bg-white/90 text-primary px-2 sm:px-3 py-1 rounded-full text-xs font-semibold">
                       {project.deliveryTime}
                     </span>
                   </div>
@@ -211,33 +211,33 @@ const PortfolioPage: React.FC = () => {
                 </div>
 
                 {/* Content */}
-                <div className="p-6">
+                <div className="p-4 sm:p-6">
                   <div className="flex items-center justify-between mb-3">
-                    <h3 className="font-bold text-xl text-primary group-hover:text-accent-green transition-colors duration-200">
+                    <h3 className="font-bold text-lg sm:text-xl text-primary group-hover:text-accent-green transition-colors duration-200 flex-1 pr-2">
                       {project.title}
                     </h3>
-                    <span className="text-xs bg-highlight-brown/10 text-highlight-brown px-2 py-1 rounded-full">
+                    <span className="text-xs bg-highlight-brown/10 text-highlight-brown px-2 py-1 rounded-full flex-shrink-0">
                       {project.category}
                     </span>
                   </div>
 
-                  <p className="text-primary/80 mb-4 text-sm">{project.description}</p>
+                  <p className="text-primary/80 mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">{project.description}</p>
 
-                  <div className="space-y-2 mb-4">
+                  <div className="space-y-1 sm:space-y-2 mb-3 sm:mb-4">
                     {project.features.slice(0, 3).map((feature, featureIndex) => (
-                      <div key={featureIndex} className="text-xs text-primary/70 flex items-center">
-                        <CheckCircle className="text-accent-green mr-2 flex-shrink-0" size={14} />
+                      <div key={featureIndex} className="text-xs text-primary/70 flex items-start">
+                        <CheckCircle className="text-accent-green mr-2 flex-shrink-0 mt-0.5" size={12} />
                         {feature}
                       </div>
                     ))}
                   </div>
 
                   {/* Technologies */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
                     {project.technologies.map((tech, techIndex) => (
                       <span
                         key={techIndex}
-                        className="bg-sand-light/50 text-primary px-2 py-1 rounded text-xs"
+                        className="bg-sand-light/50 text-primary px-1.5 sm:px-2 py-0.5 sm:py-1 rounded text-xs"
                       >
                         {tech}
                       </span>
@@ -245,11 +245,11 @@ const PortfolioPage: React.FC = () => {
                   </div>
 
                   {/* Results */}
-                  <div className="bg-accent-green/5 p-3 rounded-lg mb-4">
-                    <h4 className="font-semibold text-primary text-sm mb-2">Résultats autonomie :</h4>
+                  <div className="bg-accent-green/5 p-2 sm:p-3 rounded-lg mb-3 sm:mb-4">
+                    <h4 className="font-semibold text-primary text-xs sm:text-sm mb-1 sm:mb-2">Résultats autonomie :</h4>
                     <div className="space-y-1">
                       {project.results.map((result, resultIndex) => (
-                        <div key={resultIndex} className="text-xs text-primary/70 flex items-center">
+                        <div key={resultIndex} className="text-xs text-primary/70 flex items-start">
                           <div className="w-1.5 h-1.5 bg-accent-green rounded-full mr-2"></div>
                           {result}
                         </div>
@@ -258,13 +258,13 @@ const PortfolioPage: React.FC = () => {
                   </div>
 
                   {/* Testimonial */}
-                  <div className="bg-sand-light/50 p-4 rounded-lg">
+                  <div className="bg-sand-light/50 p-3 sm:p-4 rounded-lg">
                     <div className="flex items-center mb-2">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} size={12} className="text-yellow-400 fill-current" />
+                        <Star key={i} size={10} className="text-yellow-400 fill-current" />
                       ))}
                     </div>
-                    <p className="text-sm text-primary/80 italic mb-2">"{project.testimonial}"</p>
+                    <p className="text-xs sm:text-sm text-primary/80 italic mb-2 leading-relaxed">"{project.testimonial}"</p>
                     <p className="text-xs text-primary/60 font-medium">- {project.client}</p>
                   </div>
                 </div>
