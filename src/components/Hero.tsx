@@ -13,7 +13,7 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
   }, []);
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-sand-light via-beige-gold to-sand-light">
+    <section className="py-16 md:py-20 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-sand-light via-beige-gold to-sand-light">
       {/* Animated Background Elements */}
       <div className="absolute inset-0">
         <div className={`absolute top-20 left-10 w-32 h-32 bg-accent-green/10 rounded-full blur-xl transition-transform duration-1000 ${
@@ -94,7 +94,7 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
             <p className="text-primary/70 mb-4">Interface simple - Vous gérez votre contenu en autonomie</p>
-            <p className="text-sm text-primary/60">International • Disponible maintenant dans votre fuseau</p>
+            <p className="text-sm text-primary/60">Disponible maintenant • Formation incluse</p>
           </div>
         </div>
       </div>

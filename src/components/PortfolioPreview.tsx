@@ -55,7 +55,7 @@ const PortfolioPreview: React.FC<PortfolioPreviewProps> = ({ onViewAllClick }) =
   }, []);
 
   return (
-    <section ref={elementRef} className="py-20 bg-gradient-to-br from-beige-gold/30 to-sand-light relative overflow-hidden">
+    <section ref={elementRef} className="py-16 bg-gradient-to-br from-beige-gold/30 to-sand-light relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className={`text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'

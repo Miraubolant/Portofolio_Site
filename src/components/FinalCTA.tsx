@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 
 const FinalCTA: React.FC = () => {
   return (
-    <section className="py-20 bg-gradient-to-br from-primary to-accent-green relative overflow-hidden">
+    <section className="py-16 bg-gradient-to-br from-primary to-accent-green relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute top-10 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>

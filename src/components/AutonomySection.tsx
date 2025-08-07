@@ -34,7 +34,7 @@ const AutonomySection: React.FC = () => {
   }, []);
 
   return (
-    <section ref={elementRef} className="py-20 bg-gradient-to-br from-sand-light to-beige-gold relative overflow-hidden">
+    <section ref={elementRef} className="py-16 bg-gradient-to-br from-sand-light to-beige-gold relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-accent-green/5 via-transparent to-highlight-brown/5"></div>

@@ -35,7 +35,7 @@ const Presentation: React.FC = () => {
   };
 
   return (
-    <section ref={elementRef} className="py-20 bg-white relative overflow-hidden">
+    <section ref={elementRef} className="py-16 bg-white relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute top-10 right-10 w-48 h-48 bg-sand-light rounded-full blur-3xl opacity-50"></div>
       <div className="absolute bottom-10 left-10 w-64 h-64 bg-beige-gold/30 rounded-full blur-3xl opacity-50"></div>

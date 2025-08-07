@@ -106,7 +106,7 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
   }, [isVisible]);
 
   return (
-    <section ref={elementRef} className="py-20 bg-gradient-to-br from-sand-light/20 via-white to-beige-gold/20 relative overflow-hidden">
+    <section ref={elementRef} className="py-16 bg-gradient-to-br from-sand-light/20 via-white to-beige-gold/20 relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-10 right-10 w-64 h-64 bg-accent-green/10 rounded-full blur-3xl animate-pulse-soft"></div>

@@ -33,7 +33,7 @@ const AvailabilitySection: React.FC = () => {
   ];
 
   return (
-    <section ref={elementRef} className="py-20 bg-white relative overflow-hidden">
+    <section ref={elementRef} className="py-16 bg-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-64 h-64 bg-accent-green/5 rounded-full blur-3xl"></div>
