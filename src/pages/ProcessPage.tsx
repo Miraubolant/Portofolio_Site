@@ -147,9 +147,9 @@ const ProcessPage: React.FC = () => {
     { name: 'React/Next.js', category: 'Frontend', icon: '⚛️' },
     { name: 'Node.js/Express', category: 'Backend', icon: '🟢' },
     { name: 'MongoDB/PostgreSQL', category: 'Database', icon: '🗄️' },
-    { name: 'Strapi/Sanity', category: 'CMS', icon: '📝' },
+    { name: 'CMS Personnalisé', category: 'CMS', icon: '📝' },
     { name: 'Tailwind CSS', category: 'Styling', icon: '🎨' },
-    { name: 'Vercel/Netlify', category: 'Hosting', icon: '🚀' }
+    { name: 'Coolify/Contabo', category: 'Hosting', icon: '🚀' }
   ];
 
   const guarantees = [

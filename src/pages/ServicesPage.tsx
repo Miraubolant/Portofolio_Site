@@ -54,7 +54,7 @@ const ServicesPage: React.FC = () => {
         'Architecture boutique + admin',
         'Développement + intégrations',
         'Formation gestion complète (4h)',
-        'Lancement + accompagnement'
+        'Déploiement Coolify + accompagnement'
       ]
     },
     {
@@ -72,14 +72,15 @@ const ServicesPage: React.FC = () => {
         'API intégrées',
         'Formation approfondie incluse',
         'Documentation complète',
-        'Support technique prioritaire'
+        'Support technique prioritaire',
+        'Hébergement Contabo optimisé'
       ],
       process: [
         'Analyse processus métier',
         'Conception UX/UI + admin',
         'Développement full-stack',
         'Formation équipe (6h)',
-        'Déploiement + maintenance'
+        'Déploiement Coolify/Contabo + maintenance'
       ]
     }
   ];

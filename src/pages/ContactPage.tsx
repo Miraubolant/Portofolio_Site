@@ -54,8 +54,8 @@ const ContactPage: React.FC = () => {
       answer: 'Oui ! 1 an d\'hébergement professionnel + maintenance + mises à jour sécurité + sauvegardes automatiques inclus. Puis 15€/mois seulement.'
     },
     {
-      question: 'Puis-je voir des exemples d\'interfaces admin ?',
-      answer: 'Absolument ! Je peux vous montrer des démos d\'interfaces admin en visio. Chaque interface est personnalisée selon vos besoins spécifiques.'
+      question: 'Quels outils utilisez-vous pour l\'hébergement ?',
+      answer: 'J\'utilise Coolify pour le déploiement automatisé et Contabo pour l\'hébergement haute performance. Stack moderne, sécurisée et économique pour mes clients.'
     },
     {
       question: 'Travaillez-vous à l\'international ?',
