@@ -59,7 +59,7 @@ const ContactPage: React.FC = () => {
     },
     {
       question: 'Travaillez-vous à l\'international ?',
-      answer: 'Oui ! Clients en France, Canada, Suisse, Belgique... Formation à distance optimisée, disponible 7j/7 24h/24 dans votre fuseau horaire.'
+      answer: 'Je me concentre sur la France pour offrir un service optimal. Formation à distance dans toute la France, disponible 7j/7 avec horaires adaptés.'
     }
   ];
 
@@ -76,8 +76,8 @@ const ContactPage: React.FC = () => {
     },
     {
       icon: <Globe size={24} />,
-      title: 'Service international',
-      description: 'Clients formés dans le monde entier'
+      title: 'Service France entière',
+      description: 'Clients formés dans toute la France'
     },
     {
       icon: <MapPin size={24} />,

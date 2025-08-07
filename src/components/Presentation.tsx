@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Users, Globe, Clock, CheckCircle } from 'lucide-react';
+import { Users, MapPin, Clock, CheckCircle } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const Presentation: React.FC = () => {
@@ -74,10 +74,10 @@ const Presentation: React.FC = () => {
             </div>
 
             <div className="flex items-center space-x-8 p-6 bg-gradient-to-r from-sand-light to-beige-gold rounded-xl">
-              <Globe className="text-accent-green" size={32} />
+              <MapPin className="text-accent-green" size={32} />
               <div>
-                <p className="font-semibold text-primary text-lg">International • 7j/7 24h/24</p>
-                <p className="text-primary/70">Disponible dans votre fuseau horaire</p>
+                <p className="font-semibold text-primary text-lg">France • 7j/7 disponible</p>
+                <p className="text-primary/70">Adapté aux horaires français</p>
               </div>
             </div>
           </div>

@@ -1,46 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { Clock, Globe, MessageCircle, Mail, CheckCircle } from 'lucide-react';
+import { Clock, MapPin, MessageCircle, Mail, CheckCircle } from 'lucide-react';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 
 const AvailabilitySection: React.FC = () => {
   const { elementRef, isVisible } = useIntersectionObserver();
-  const [currentTime, setCurrentTime] = useState(new Date());
-
-  const timeZones = [
-    { city: 'Paris', offset: 1, flag: '🇫🇷' },
-    { city: 'New York', offset: -5, flag: '🇺🇸' },
-    { city: 'Tokyo', offset: 9, flag: '🇯🇵' },
-    { city: 'Sydney', offset: 11, flag: '🇦🇺' }
+  
+  const frenchRegions = [
+    { region: 'Île-de-France', icon: '🏢', specialty: 'Startups & E-commerce' },
+    { region: 'Auvergne-Rhône-Alpes', icon: '🏔️', specialty: 'PME & Artisans' },
+    { region: 'Nouvelle-Aquitaine', icon: '🍷', specialty: 'Commerce & Tourisme' },
+    { region: 'Occitanie', icon: '☀️', specialty: 'Tech & Innovation' }
   ];
-
-  useEffect(() => {
-    // Update time every second
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, []);
-
-  const getTimeForZone = (offset: number) => {
-    const now = new Date();
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    const zoneTime = new Date(utc + (offset * 3600000));
-    return zoneTime.toLocaleTimeString('fr-FR', { 
-      hour: '2-digit', 
-      minute: '2-digit'
-    });
-  };
-
-  const isBusinessHours = (offset: number) => {
-    const now = new Date();
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    const zoneTime = new Date(utc + (offset * 3600000));
-    const hour = zoneTime.getHours();
-    return hour >= 8 && hour <= 20;
-  };
 
   return (
     <section ref={elementRef} className="py-20 bg-white relative overflow-hidden">
@@ -63,36 +33,33 @@ const AvailabilitySection: React.FC = () => {
         </div>
 
         <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* World Clock */}
+          {/* French Regions Coverage */}
           <div className={`transition-all duration-1000 delay-300 ${
             isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
           }`}>
             <div className="bg-gradient-to-br from-sand-light/50 to-beige-gold/50 p-8 rounded-2xl">
               <div className="flex items-center justify-center mb-8">
-                <Globe className="text-accent-green mr-3" size={36} />
-                <h3 className="text-2xl font-bold text-primary">Horloge mondiale</h3>
+                <MapPin className="text-accent-green mr-3" size={36} />
+                <h3 className="text-2xl font-bold text-primary">Couverture France</h3>
               </div>
 
               <div className="space-y-4">
-                {timeZones.map((zone, index) => (
+                {frenchRegions.map((region, index) => (
                   <div
-                    key={zone.city}
+                    key={region.region}
                     className={`flex items-center justify-between p-4 bg-white/70 rounded-xl transition-all duration-500 ${
                       isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-4'
                     }`}
                     style={{ transitionDelay: `${300 + index * 100}ms` }}
                   >
                     <div className="flex items-center space-x-3">
-                      <span className="text-2xl">{zone.flag}</span>
-                      <span className="font-semibold text-primary">{zone.city}</span>
+                      <span className="text-2xl">{region.icon}</span>
+                      <span className="font-semibold text-primary">{region.region}</span>
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <span className="text-lg font-mono text-primary">
-                        {getTimeForZone(zone.offset)}
+                    <div className="text-right">
+                      <span className="text-sm text-primary/80 font-medium">
+                        {region.specialty}
                       </span>
-                      <div className={`w-3 h-3 rounded-full ${
-                        isBusinessHours(zone.offset) ? 'bg-green-500' : 'bg-red-400'
-                      }`}></div>
                     </div>
                   </div>
                 ))}
@@ -100,7 +67,7 @@ const AvailabilitySection: React.FC = () => {
 
               <div className="mt-6 p-4 bg-accent-green/10 rounded-xl text-center">
                 <Clock className="text-accent-green mx-auto mb-2" size={24} />
-                <p className="text-primary font-medium">Support formation disponible 24h/24</p>
+                <p className="text-primary font-medium">Support formation 7j/7 - Horaires français</p>
               </div>
             </div>
           </div>
@@ -120,7 +87,7 @@ const AvailabilitySection: React.FC = () => {
               </div>
 
               <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl border border-sand-light/50">
-                <Globe className="text-highlight-brown mb-4" size={32} />
+                <MapPin className="text-highlight-brown mb-4" size={32} />
                 <h3 className="text-xl font-bold text-primary mb-3">Couverture France entière</h3>
                 <p className="text-primary/80">
                   Clients formés dans toute la France. Formation à distance optimisée 
