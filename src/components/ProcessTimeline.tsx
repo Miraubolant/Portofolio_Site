@@ -172,15 +172,6 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                   </div>
 
                   {/* Step Number */}
-                  <div className={`w-full lg:w-5/12 flex ${
-                    index % 2 === 0 ? 'lg:justify-start lg:pl-16 lg:order-2' : 'lg:justify-end lg:pr-16'
-                  } justify-center lg:justify-end`}>
-                    <div className={`w-16 h-16 ${step.bgColor} rounded-2xl flex items-center justify-center text-white font-bold text-2xl shadow-lg transition-all duration-700 ${
-                      visibleSteps.includes(index) ? 'scale-100' : 'scale-75'
-                    }`}>
-                      {index + 1}
-                    </div>
-                  </div>
                 </div>
               </div>
             ))}
