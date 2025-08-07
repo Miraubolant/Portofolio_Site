@@ -97,11 +97,11 @@ const ServicesPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-              Services <span className="text-accent-green">Sites Autonomes</span>
+              <span className="text-accent-green">Services</span> Sites Autonomes Express
             </h1>
             <p className="text-xl text-primary/80 max-w-3xl mx-auto">
-              Chaque service inclut développement complet + interface admin simple + formation personnalisée = 
-              <span className="font-semibold text-accent-green"> Votre autonomie totale</span>
+              Site professionnel + Interface admin ultra-simple + Formation incluse = 
+              <span className="font-semibold text-accent-green">Votre autonomie digitale garantie</span>
             </p>
           </div>
         </div>
