@@ -99,11 +99,11 @@ const ContactPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-              Parlons de votre <span className="text-accent-green">autonomie web</span>
+              <span className="text-accent-green">Contact</span> Démarrons Votre Autonomie
             </h1>
             <p className="text-xl text-primary/80 max-w-3xl mx-auto">
-              Prêt(e) pour un site avec interface simple + formation incluse ? 
-              Contactez-moi pour démarrer votre autonomie digitale !
+              Site autonome + Interface simple + Formation incluse = Votre indépendance digitale.
+              <span className="font-semibold text-accent-green"> Démarrons ensemble votre projet !</span>
             </p>
             <div className="mt-8 flex justify-center space-x-4">
               <div className="bg-white/70 backdrop-blur-sm px-4 py-2 rounded-full border border-accent-green/20">
