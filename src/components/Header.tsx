@@ -101,7 +101,7 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
               target="_blank"
               rel="noopener noreferrer"
               onClick={trackWhatsAppClick}
-              className="flex items-center space-x-2 bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-200"
+              className="flex items-center space-x-2 bg-accent-green text-white px-4 py-2 rounded-lg hover:bg-accent-green/90 transition-colors duration-200"
             >
               <MessageCircle size={18} />
               <span>WhatsApp</span>
