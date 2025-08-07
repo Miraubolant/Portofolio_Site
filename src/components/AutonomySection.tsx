@@ -5,7 +5,7 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 const AutonomySection: React.FC = () => {
   const { elementRef, isVisible } = useIntersectionObserver();
   const [activeDemo, setActiveDemo] = useState(0);
-  const [mobileView, setMobileView] = useState(false);
+  const [viewMode, setViewMode] = useState<'desktop' | 'mobile'>('desktop');
 
   const demoFeatures = [
     {
@@ -72,19 +72,33 @@ const AutonomySection: React.FC = () => {
               </div>
 
               {/* Demo Content */}
-              <div className="p-6">
+              <div className={`transition-all duration-500 ${viewMode === 'mobile' ? 'p-4' : 'p-6'}`}>
                 <div className="flex items-center justify-between mb-6">
-                  <h3 className="font-semibold text-primary">Dashboard Principal</h3>
+                  <h3 className={`font-semibold text-primary transition-all duration-300 ${
+                    viewMode === 'mobile' ? 'text-sm' : 'text-base'
+                  }`}>
+                    {viewMode === 'mobile' ? 'Dashboard Mobile' : 'Dashboard Principal'}
+                  </h3>
                   <div className="flex space-x-2">
-                    <Monitor className="text-accent-green" size={20} />
                     <button
-                      onClick={() => setMobileView(!mobileView)}
+                      onClick={() => setViewMode('desktop')}
                       className={`p-1 rounded transition-all duration-300 hover:scale-110 ${
-                        mobileView 
+                        viewMode === 'desktop'
                           ? 'text-accent-green bg-accent-green/10' 
                           : 'text-primary/50 hover:text-accent-green'
                       }`}
-                      title={mobileView ? 'Vue Desktop' : 'Vue Mobile'}
+                      title="Vue Desktop"
+                    >
+                      <Monitor size={20} />
+                    </button>
+                    <button
+                      onClick={() => setViewMode('mobile')}
+                      className={`p-1 rounded transition-all duration-300 hover:scale-110 ${
+                        viewMode === 'mobile'
+                          ? 'text-accent-green bg-accent-green/10' 
+                          : 'text-primary/50 hover:text-accent-green'
+                      }`}
+                      title="Vue Mobile"
                     >
                       <Smartphone size={20} />
                     </button>
@@ -92,31 +106,29 @@ const AutonomySection: React.FC = () => {
                 </div>
 
                 {/* Animated Demo Features */}
-                <div className={`transition-all duration-500 ${
-                  mobileView ? 'space-y-2' : 'space-y-4'
-                }`}>
+                <div className={`transition-all duration-500 ${viewMode === 'mobile' ? 'space-y-2' : 'space-y-4'}`}>
                   {demoFeatures.map((feature, index) => (
                     <div
                       key={index}
-                      className={`${mobileView ? 'p-3' : 'p-4'} rounded-lg border-2 transition-all duration-500 ${
+                      className={`${viewMode === 'mobile' ? 'p-2' : 'p-4'} rounded-lg border-2 transition-all duration-500 ${
                         activeDemo === index
                           ? 'border-accent-green bg-accent-green/5 scale-105'
                           : 'border-gray-200 bg-gray-50'
                       }`}
                     >
-                      <div className={`flex items-center ${mobileView ? 'space-x-2' : 'space-x-3'}`}>
+                      <div className={`flex items-center ${viewMode === 'mobile' ? 'space-x-2' : 'space-x-3'}`}>
                         <div className={`p-2 rounded-lg ${
                           activeDemo === index ? 'bg-accent-green text-white' : 'bg-gray-200 text-primary'
                         }`}>
-                          <div className={mobileView ? 'scale-75' : ''}>
+                          <div className={viewMode === 'mobile' ? 'scale-75' : ''}>
                             {feature.icon}
                           </div>
                         </div>
                         <div>
-                          <h4 className={`font-semibold text-primary ${mobileView ? 'text-sm' : ''}`}>
+                          <h4 className={`font-semibold text-primary ${viewMode === 'mobile' ? 'text-xs' : 'text-sm'}`}>
                             {feature.title}
                           </h4>
-                          <p className={`text-primary/70 ${mobileView ? 'text-xs' : 'text-sm'}`}>
+                          <p className={`text-primary/70 ${viewMode === 'mobile' ? 'text-xs' : 'text-sm'}`}>
                             {feature.description}
                           </p>
                         </div>
@@ -126,14 +138,27 @@ const AutonomySection: React.FC = () => {
                 </div>
 
                 {/* Demo Video Placeholder */}
-                <div className={`${mobileView ? 'mt-4' : 'mt-6'} bg-gradient-to-br from-primary/5 to-accent-green/5 rounded-lg ${mobileView ? 'p-4' : 'p-8'} text-center`}>
-                  <Play className="text-accent-green mx-auto mb-3" size={mobileView ? 32 : 48} />
-                  <p className={`text-primary font-medium mb-2 ${mobileView ? 'text-sm' : ''}`}>
-                    {mobileView ? 'Démo Mobile' : 'Démo en action'}
+                <div className={`${viewMode === 'mobile' ? 'mt-3' : 'mt-6'} bg-gradient-to-br from-primary/5 to-accent-green/5 rounded-lg transition-all duration-500 ${
+                  viewMode === 'mobile' ? 'p-3' : 'p-8'
+                } text-center`}>
+                  <Play className="text-accent-green mx-auto mb-3 transition-all duration-300" size={viewMode === 'mobile' ? 24 : 48} />
+                  <p className={`text-primary font-medium mb-2 transition-all duration-300 ${
+                    viewMode === 'mobile' ? 'text-xs' : 'text-base'
+                  }`}>
+                    {viewMode === 'mobile' ? 'Interface Mobile Optimisée' : 'Démo Interface Complète'}
                   </p>
-                  <p className={`text-primary/70 ${mobileView ? 'text-xs' : 'text-sm'}`}>
-                    {mobileView ? 'Interface adaptée' : 'Voyez comme c\'est simple !'}
+                  <p className={`text-primary/70 transition-all duration-300 ${
+                    viewMode === 'mobile' ? 'text-xs' : 'text-sm'
+                  }`}>
+                    {viewMode === 'mobile' ? 'Gestion tactile simplifiée' : 'Voyez comme c\'est simple à utiliser !'}
                   </p>
+                  {viewMode === 'mobile' && (
+                    <div className="mt-2 flex justify-center space-x-1">
+                      <div className="w-2 h-2 bg-accent-green rounded-full"></div>
+                      <div className="w-2 h-2 bg-accent-green/50 rounded-full"></div>
+                      <div className="w-2 h-2 bg-accent-green/30 rounded-full"></div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
