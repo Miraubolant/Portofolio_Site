@@ -142,7 +142,7 @@ const AvailabilitySection: React.FC = () => {
                   href="https://wa.me/33123456789"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center justify-center space-x-2 bg-green-500 text-white p-4 rounded-xl hover:bg-green-600 transition-all duration-300 transform hover:scale-105"
+                  className="flex items-center justify-center space-x-2 bg-accent-green text-white p-4 rounded-xl hover:bg-accent-green/90 transition-all duration-300 transform hover:scale-105"
                 >
                   <MessageCircle size={20} />
                   <span className="font-medium">WhatsApp</span>

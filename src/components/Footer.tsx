@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
                 href="https://wa.me/33123456789"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-2 bg-green-500 px-4 py-2 rounded-lg hover:bg-green-600 transition-colors duration-200 text-sm"
+                className="flex items-center justify-center space-x-2 bg-accent-green px-4 py-2 rounded-lg hover:bg-accent-green/90 transition-colors duration-200 text-sm"
               >
                 <MessageCircle size={16} />
                 <span>WhatsApp</span>
