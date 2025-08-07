@@ -74,42 +74,67 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
     }
   ];
 
+  // Animation des étapes visibles
   useEffect(() => {
     if (isVisible) {
+      // Clear previous animations
+      setVisibleSteps([]);
+      
+      // Stagger animations
+      const timeouts: NodeJS.Timeout[] = [];
       processSteps.forEach((_, index) => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
           setVisibleSteps(prev => [...prev, index]);
         }, index * 200);
+        timeouts.push(timeout);
       });
-    }
-  }, [isVisible]);
 
+      // Cleanup timeouts
+      return () => {
+        timeouts.forEach(timeout => clearTimeout(timeout));
+      };
+    }
+  }, [isVisible, processSteps.length]);
+
+  // Gestion du scroll progress
   useEffect(() => {
     const handleScroll = () => {
-      if (timelineRef.current) {
-        const rect = timelineRef.current.getBoundingClientRect();
-        const windowHeight = window.innerHeight;
-        const elementTop = rect.top;
-        const elementHeight = rect.height;
-        
-        const startOffset = windowHeight * 0.8;
-        const endOffset = -elementHeight + windowHeight * 0.2;
-        
-        if (elementTop <= startOffset && elementTop >= endOffset) {
-          const progress = (startOffset - elementTop) / (startOffset - endOffset);
-          setScrollProgress(Math.min(Math.max(progress, 0), 1));
-        } else if (elementTop > startOffset) {
-          setScrollProgress(0);
-        } else if (elementTop < endOffset) {
-          setScrollProgress(1);
-        }
+      if (!timelineRef.current) return;
+      
+      const rect = timelineRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const elementTop = rect.top;
+      const elementHeight = rect.height;
+      
+      const startOffset = windowHeight * 0.8;
+      const endOffset = -elementHeight + windowHeight * 0.2;
+      
+      if (elementTop <= startOffset && elementTop >= endOffset) {
+        const progress = (startOffset - elementTop) / (startOffset - endOffset);
+        setScrollProgress(Math.min(Math.max(progress, 0), 1));
+      } else if (elementTop > startOffset) {
+        setScrollProgress(0);
+      } else if (elementTop < endOffset) {
+        setScrollProgress(1);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    handleScroll();
+    // Throttle scroll events for better performance
+    let ticking = false;
+    const throttledHandleScroll = () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    handleScroll(); // Initial call
     
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', throttledHandleScroll);
   }, []);
 
   const handleDetailClick = () => {
@@ -121,11 +146,15 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
   };
 
   return (
-    <section ref={elementRef} className="py-20 bg-gradient-to-br from-sand-light/20 via-white to-beige-gold/20 relative overflow-hidden">
+    <section 
+      ref={elementRef} 
+      className="py-20 bg-gradient-to-br from-sand-light/20 via-white to-beige-gold/20 relative overflow-hidden"
+      aria-label="Processus de développement"
+    >
       {/* Background Decorations */}
-      <div className="absolute inset-0">
-        <div className="absolute top-10 right-10 w-64 h-64 bg-accent-green/5 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-10 w-80 h-80 bg-highlight-brown/5 rounded-full blur-3xl"></div>
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        <div className="absolute top-10 right-10 w-64 h-64 bg-accent-green/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-highlight-brown/5 rounded-full blur-3xl" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -143,23 +172,27 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
         </div>
 
         {/* Timeline */}
-        <div ref={timelineRef} className="relative">
+        <div ref={timelineRef} className="relative" role="list" aria-label="Étapes du processus">
           {/* Animated Timeline Line - Desktop Only */}
-          <div className="absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-accent-green/20 via-highlight-brown/20 to-accent-green/20 rounded-full hidden lg:block">
+          <div 
+            className="absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-accent-green/20 via-highlight-brown/20 to-accent-green/20 rounded-full hidden lg:block"
+            aria-hidden="true"
+          >
             <div 
               className="w-full bg-gradient-to-b from-accent-green via-highlight-brown to-accent-green rounded-full transition-all duration-300 ease-out"
               style={{ 
                 height: `${scrollProgress * 100}%`,
                 boxShadow: scrollProgress > 0 ? '0 0 20px rgba(93, 112, 82, 0.5)' : 'none'
               }}
-            ></div>
+            />
           </div>
 
           {/* Steps */}
           <div className="space-y-12 lg:space-y-20">
             {processSteps.map((step, index) => (
               <div
-                key={index}
+                key={`step-${index}`}
+                role="listitem"
                 className={`relative transition-all duration-700 ${
                   visibleSteps.includes(index)
                     ? 'opacity-100 translate-y-0'
@@ -168,7 +201,10 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
                 {/* Timeline Node - Desktop Only */}
-                <div className="absolute left-1/2 transform -translate-x-1/2 top-8 hidden lg:block z-10">
+                <div 
+                  className="absolute left-1/2 transform -translate-x-1/2 top-8 hidden lg:block z-10"
+                  aria-hidden="true"
+                >
                   <div className={`w-12 h-12 rounded-full ${step.bgColor} text-white flex items-center justify-center shadow-lg transition-all duration-500 ${
                     scrollProgress >= (index + 1) / processSteps.length ? 'scale-110 shadow-2xl' : 'scale-100'
                   }`}>
@@ -184,16 +220,16 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                       
                       {/* Step Header */}
                       <div className="flex items-center space-x-4 mb-6">
-                        <div className={`p-3 rounded-xl ${step.bgColor} text-white lg:hidden`}>
+                        <div className={`p-3 rounded-xl ${step.bgColor} text-white lg:hidden flex-shrink-0`}>
                           {step.icon}
                         </div>
-                        <div>
+                        <div className="flex-1 min-w-0">
                           <div className="flex items-center space-x-3 mb-2">
-                            <span className={`px-3 py-1 rounded-full text-sm font-semibold text-white ${step.bgColor}`}>
+                            <span className={`px-3 py-1 rounded-full text-sm font-semibold text-white ${step.bgColor} whitespace-nowrap`}>
                               {step.duration}
                             </span>
                           </div>
-                          <h3 className="text-2xl font-bold text-primary">{step.title}</h3>
+                          <h3 className="text-2xl font-bold text-primary break-words">{step.title}</h3>
                         </div>
                       </div>
 
@@ -236,7 +272,7 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
         }`}>
           <div className="bg-white/80 backdrop-blur-sm p-8 rounded-2xl mb-8 max-w-2xl mx-auto border border-accent-green/20 shadow-lg">
             <div className="flex items-center justify-center space-x-3 mb-4">
-              <Target className="text-accent-green" size={24} />
+              <Target className="text-accent-green flex-shrink-0" size={24} />
               <h3 className="text-2xl font-bold text-primary">Résultat garanti :</h3>
             </div>
             <p className="text-primary/80 text-lg leading-relaxed mb-6">
@@ -263,7 +299,8 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
           
           <button
             onClick={handleDetailClick}
-            className="group bg-gradient-to-r from-accent-green to-highlight-brown text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="group bg-gradient-to-r from-accent-green to-highlight-brown text-white px-8 py-4 rounded-xl text-lg font-semibold hover:shadow-xl transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-accent-green focus:ring-offset-2"
+            aria-label="Découvrir le processus détaillé"
           >
             <div className="flex items-center space-x-3">
               <span>Découvrir le processus détaillé</span>
