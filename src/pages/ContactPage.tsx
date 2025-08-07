@@ -188,7 +188,7 @@ const ContactPage: React.FC = () => {
                 <h4 className="font-semibold text-primary mb-3">Disponibilité :</h4>
                 <div className="space-y-2 text-primary/80 text-sm">
                   <p><strong>Lundi - Dimanche :</strong> 8h - 20h (heure française)</p>
-                  <p><strong>International :</strong> Adaptation à votre fuseau</p>
+                  <p><strong>France entière :</strong> Adaptation à vos horaires</p>
                   <p><strong>Contact :</strong> WhatsApp et Email</p>
                   <p><strong>Formation :</strong> Créneaux flexibles</p>
                 </div>

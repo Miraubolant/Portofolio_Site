@@ -55,10 +55,10 @@ const AvailabilitySection: React.FC = () => {
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
           <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Disponible <span className="text-accent-green">maintenant</span> dans votre fuseau
+            Disponible <span className="text-accent-green">maintenant</span> en France
           </h2>
           <p className="text-xl text-primary/80 max-w-3xl mx-auto">
-            Service international 7j/7 24h/24 avec support formation inclus
+            Service français 7j/7 avec support formation inclus et réponse garantie
           </p>
         </div>
 
@@ -112,19 +112,19 @@ const AvailabilitySection: React.FC = () => {
             <div className="space-y-6">
               <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl border border-sand-light/50">
                 <CheckCircle className="text-accent-green mb-4" size={32} />
-                <h3 className="text-xl font-bold text-primary mb-3">Réponse garantie sous 2h</h3>
+                <h3 className="text-xl font-bold text-primary mb-3">Réponse garantie sous 48h max</h3>
                 <p className="text-primary/80">
-                  Quel que soit votre fuseau horaire, je m'adapte à votre planning pour assurer 
-                  un support optimal et une formation efficace.
+                  Basé en France, je m'adapte à votre planning pour assurer 
+                  un support optimal et une formation efficace sur tout le territoire.
                 </p>
               </div>
 
               <div className="bg-white/70 backdrop-blur-sm p-6 rounded-xl border border-sand-light/50">
                 <Globe className="text-highlight-brown mb-4" size={32} />
-                <h3 className="text-xl font-bold text-primary mb-3">Portée internationale</h3>
+                <h3 className="text-xl font-bold text-primary mb-3">Couverture France entière</h3>
                 <p className="text-primary/80">
-                  Clients formés en France, Canada, Suisse, Belgique et dans le monde entier. 
-                  Formation à distance optimisée pour tous les fuseaux.
+                  Clients formés dans toute la France. Formation à distance optimisée 
+                  avec créneaux adaptés aux horaires français.
                 </p>
               </div>
 
