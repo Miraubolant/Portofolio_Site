@@ -44,7 +44,12 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
             <div className="w-10 h-10 bg-gradient-to-br from-accent-green to-highlight-brown rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">VM</span>
             </div>
-            <span className="font-bold text-xl text-primary">Victor Mirault</span>
+            <div>
+              <span className="font-bold text-xl text-primary bg-gradient-to-r from-accent-green/10 to-highlight-brown/10 px-3 py-1 rounded-lg border border-accent-green/20">
+                Victor Mirault
+              </span>
+              <p className="text-sm text-primary/70 mt-1">Sites autonomes express</p>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
