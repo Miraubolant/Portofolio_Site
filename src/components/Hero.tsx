@@ -29,20 +29,11 @@ const Hero: React.FC<HeroProps> = ({ onCtaClick }) => {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center">
-          {/* Logo Hero */}
-          <div className={`flex justify-center mb-6 sm:mb-8 transition-all duration-1000 ${
-            isVisible ? 'opacity-100 scale-100' : 'opacity-0 scale-75'
-          }`}>
-            <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-accent-green to-highlight-brown rounded-2xl flex items-center justify-center shadow-2xl">
-              <span className="text-white font-bold text-xl sm:text-2xl">VM</span>
-            </div>
-          </div>
-
           {/* Main Heading */}
           <div className={`transition-all duration-1000 ${
             isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary mb-4 md:mb-6 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary mb-4 md:mb-6 leading-tight mt-6 sm:mt-8">
               Victor Mirault
               <span className="block text-accent-green">Sites Autonomes</span>
               <span className="block text-highlight-brown">Express</span>
