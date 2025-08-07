@@ -119,11 +119,11 @@ const BlogPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-              Blog <span className="text-accent-green">Autonomie Digitale</span>
+              <span className="text-accent-green">Blog</span> Autonomie Digitale
             </h1>
             <p className="text-xl text-primary/80 max-w-3xl mx-auto">
-              Conseils, méthodes et retours d'expérience pour votre autonomie web. 
-              Apprenez à gérer votre site comme un pro !
+              Conseils exclusifs, méthodes éprouvées et retours d'expérience pour votre autonomie web. 
+              <span className="font-semibold text-accent-green">Devenez maître de votre site !</span>
             </p>
           </div>
 
