@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect, useRef } from 'react';
 import { trackWebVitals, preloadImages } from './utils/performance';
 import AnalyticsTracker from './components/AnalyticsTracker';
+import ErrorBoundary from './components/ErrorBoundary';
+import CookieConsent from './components/CookieConsent';
+import BackToTop from './components/BackToTop';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
@@ -73,33 +76,37 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="min-h-screen bg-white">
-        <AnalyticsTracker />
-        <ScrollToTop />
-        <Header activeSection={activeSection} onSectionChange={handleSectionChange} />
-        
-        <Routes>
-          <Route 
-            path="/" 
-            element={
-              <HomePage 
-                onHeroCtaClick={handleHeroCtaClick}
-                onProcessDetailClick={handleProcessDetailClick}
-                onPortfolioViewAllClick={handlePortfolioViewAllClick}
-              />
-            } 
-          />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/portfolio" element={<PortfolioPage />} />
-          <Route path="/processus" element={<ProcessPage />} />
-          <Route path="/blog" element={<BlogPage />} />
-          <Route path="/contact" element={<ContactPage />} />
-        </Routes>
-        
-        <Footer />
-      </div>
-    </Router>
+    <ErrorBoundary>
+      <Router>
+        <div className="min-h-screen bg-white">
+          <AnalyticsTracker />
+          <ScrollToTop />
+          <Header activeSection={activeSection} onSectionChange={handleSectionChange} />
+          
+          <Routes>
+            <Route 
+              path="/" 
+              element={
+                <HomePage 
+                  onHeroCtaClick={handleHeroCtaClick}
+                  onProcessDetailClick={handleProcessDetailClick}
+                  onPortfolioViewAllClick={handlePortfolioViewAllClick}
+                />
+              } 
+            />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/portfolio" element={<PortfolioPage />} />
+            <Route path="/processus" element={<ProcessPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/contact" element={<ContactPage />} />
+          </Routes>
+          
+          <Footer />
+          <CookieConsent />
+          <BackToTop />
+        </div>
+      </Router>
+    </ErrorBoundary>
   );
 }
 
