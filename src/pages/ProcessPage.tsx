@@ -187,11 +187,11 @@ const ProcessPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-              Ma méthode pour votre <span className="text-accent-green">autonomie</span>
+              <span className="text-accent-green">Ma Méthode</span> Autonomie Express
             </h1>
             <p className="text-xl text-primary/80 max-w-3xl mx-auto">
-              6 étapes optimisées pour vous rendre totalement autonome dans la gestion de votre site web. 
-              Formation incluse jusqu'à votre maîtrise complète.
+              Processus éprouvé en 6 étapes pour votre autonomie digitale complète.
+              <span className="font-semibold text-accent-green"> Formation personnalisée jusqu'à maîtrise totale.</span>
             </p>
           </div>
         </div>
