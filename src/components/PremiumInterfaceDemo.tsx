@@ -95,7 +95,7 @@ const PremiumInterfaceDemo: React.FC = () => {
               }`}
             >
               <Monitor size={20} />
-              <span>💻 Mode Desktop</span>
+              <span>Mode Desktop</span>
             </button>
             <button
               onClick={() => handleModeSwitch('mobile')}
@@ -106,7 +106,7 @@ const PremiumInterfaceDemo: React.FC = () => {
               }`}
             >
               <Smartphone size={20} />
-              <span>📱 Mode Mobile</span>
+              <span>Mode Mobile</span>
             </button>
           </div>
 
