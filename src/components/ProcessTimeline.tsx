@@ -26,43 +26,115 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
       icon: <MessageSquare size={20} />,
       title: 'Brief Express',
       duration: '1-2 jours',
-      description: 'Analyse de vos besoins d\'autonomie',
-      color: 'accent-green'
+      description: 'Analyse approfondie de vos besoins d\'autonomie digitale',
+      color: 'accent-green',
+      details: [
+        'Audit complet de votre activité et objectifs',
+        'Évaluation de votre niveau technique actuel',
+        'Définition précise du niveau d\'autonomie souhaité',
+        'Identification des fonctionnalités prioritaires'
+      ],
+      deliverables: [
+        'Cahier des charges personnalisé',
+        'Maquette interface admin sur-mesure',
+        'Plan de formation adapté à votre profil',
+        'Devis détaillé avec planning précis'
+      ]
     },
     {
       icon: <Lightbulb size={20} />,
       title: 'Stratégie',
       duration: '2-3 jours',
-      description: 'Architecture technique optimisée',
-      color: 'highlight-brown'
+      description: 'Conception architecture technique et interface admin',
+      color: 'highlight-brown',
+      details: [
+        'Architecture backend sécurisée et performante',
+        'Conception interface admin ultra-intuitive',
+        'Définition des workflows de gestion',
+        'Planification détaillée de la formation'
+      ],
+      deliverables: [
+        'Architecture technique documentée',
+        'Wireframes interface admin validés',
+        'Spécifications fonctionnelles complètes',
+        'Planning de développement optimisé'
+      ]
     },
     {
       icon: <Palette size={20} />,
       title: 'Design',
       duration: '3-4 jours',
-      description: 'Interface admin ultra-simple',
-      color: 'primary'
+      description: 'Création design site + dashboard admin épuré',
+      color: 'primary',
+      details: [
+        'Design responsive premium du site web',
+        'Interface admin épurée et accessible',
+        'UX optimisée pour non-techniciens',
+        'Système de prévisualisation temps réel'
+      ],
+      deliverables: [
+        'Maquettes finales haute-fidélité',
+        'Design system complet et cohérent',
+        'Prototypes interface admin interactifs',
+        'Guide d\'utilisation visuel détaillé'
+      ]
     },
     {
       icon: <Code size={20} />,
       title: 'Développement',
       duration: '5-8 jours',
-      description: 'CMS personnalisé sécurisé',
-      color: 'accent-green'
+      description: 'Développement complet avec CMS sur-mesure',
+      color: 'accent-green',
+      details: [
+        'Développement frontend responsive et rapide',
+        'Backend sécurisé avec API optimisées',
+        'CMS personnalisé ultra-simple d\'utilisation',
+        'Intégrations tierces nécessaires (paiement, email...)'
+      ],
+      deliverables: [
+        'Site web complet et fonctionnel',
+        'Interface admin opérationnelle et testée',
+        'Documentation technique complète',
+        'Tests de sécurité et performance validés'
+      ]
     },
     {
       icon: <TestTube size={20} />,
       title: 'Tests',
       duration: '2-3 jours',
-      description: 'Validation interface admin',
-      color: 'highlight-brown'
+      description: 'Tests complets et optimisation performance',
+      color: 'highlight-brown',
+      details: [
+        'Tests utilisabilité interface admin poussés',
+        'Optimisation vitesse et performances',
+        'Tests responsive sur tous devices',
+        'Validation sécurité et sauvegardes automatiques'
+      ],
+      deliverables: [
+        'Site optimisé et ultra-sécurisé',
+        'Interface admin validée par tests utilisateurs',
+        'Rapport de performance détaillé',
+        'Environnement de formation configuré'
+      ]
     },
     {
       icon: <GraduationCap size={20} />,
       title: 'Formation',
       duration: '1-2 jours',
-      description: 'Autonomie totale garantie',
-      color: 'primary'
+      description: 'Formation personnalisée jusqu\'à maîtrise complète',
+      color: 'primary',
+      details: [
+        'Session formation 1-on-1 personnalisée et interactive',
+        'Création de tutoriels vidéo sur-mesure',
+        'Documentation pas-à-pas illustrée et claire',
+        'Support post-formation illimité et réactif'
+      ],
+      deliverables: [
+        'Client 100% autonome et confiant',
+        'Bibliothèque de tutoriels vidéo personnalisés',
+        'Documentation complète et accessible',
+        'Accès privilégié au support formation'
+      ]
     }
   ];
 
@@ -149,7 +221,7 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
           </div>
 
           {/* Active Step Details */}
-          <div className="bg-gradient-to-r from-sand-light/30 to-beige-gold/30 rounded-2xl p-6 md:p-8 mb-8 md:mb-12">
+          <div className="bg-gradient-to-r from-sand-light/30 to-beige-gold/30 rounded-2xl p-6 md:p-8 mb-8 md:mb-12 border border-accent-green/20">
             <div className="text-center">
               <div className={`inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full mb-4 bg-${processSteps[activeStep].color} text-white`}>
                 {React.cloneElement(processSteps[activeStep].icon, { size: 24 })}
@@ -163,6 +235,39 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
               <span className={`inline-block px-4 py-2 rounded-full text-sm font-semibold text-white bg-${processSteps[activeStep].color}`}>
                 {processSteps[activeStep].duration}
               </span>
+              
+              {/* Detailed Information */}
+              <div className="grid md:grid-cols-2 gap-6 mt-8 text-left">
+                <div className="bg-white/70 backdrop-blur-sm p-4 rounded-xl">
+                  <h4 className="font-semibold text-primary mb-3 flex items-center">
+                    <div className="w-2 h-2 bg-accent-green rounded-full mr-2"></div>
+                    Détails du processus
+                  </h4>
+                  <div className="space-y-2">
+                    {processSteps[activeStep].details?.map((detail, index) => (
+                      <div key={index} className="flex items-start space-x-2">
+                        <CheckCircle className="text-accent-green flex-shrink-0 mt-0.5" size={14} />
+                        <span className="text-primary/80 text-sm">{detail}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                
+                <div className="bg-white/70 backdrop-blur-sm p-4 rounded-xl">
+                  <h4 className="font-semibold text-primary mb-3 flex items-center">
+                    <div className="w-2 h-2 bg-highlight-brown rounded-full mr-2"></div>
+                    Livrables inclus
+                  </h4>
+                  <div className="space-y-2">
+                    {processSteps[activeStep].deliverables?.map((deliverable, index) => (
+                      <div key={index} className="flex items-start space-x-2">
+                        <ArrowRight className="text-highlight-brown flex-shrink-0 mt-0.5" size={14} />
+                        <span className="text-primary/80 text-sm">{deliverable}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
