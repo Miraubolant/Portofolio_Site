@@ -131,21 +131,19 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <div className="flex items-center justify-center">
+                <div className={`grid lg:grid-cols-2 gap-16 items-center ${
+                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                }`}>
                   {/* Content */}
-                  <div className={`w-full lg:w-5/12 ${
-                    index % 2 === 0 ? 'lg:pr-16 lg:text-right' : 'lg:pl-16 lg:text-left lg:order-2'
-                  }`}>
+                  <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
                     <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-sand-light/30 hover:shadow-xl transition-all duration-300">
                       
                       {/* Step Header */}
-                      <div className={`flex items-center space-x-4 mb-6 ${
-                        index % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'
-                      } justify-start`}>
+                      <div className="flex items-center space-x-4 mb-6">
                         <div className={`p-3 rounded-xl ${step.bgColor} text-white`}>
                           {step.icon}
                         </div>
-                        <div className={index % 2 === 0 ? 'lg:text-right' : 'lg:text-left'}>
+                        <div>
                           <div className="flex items-center space-x-3 mb-2">
                             <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">
                               Étape {index + 1}
@@ -162,16 +160,29 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                     </div>
                   </div>
 
-                  {/* Timeline Node */}
-                  <div className={`absolute left-1/2 transform -translate-x-1/2 w-12 h-12 rounded-full bg-white border-4 border-accent-green shadow-lg transition-all duration-700 z-10 hidden lg:flex items-center justify-center ${
-                    visibleSteps.includes(index) ? 'scale-100' : 'scale-0'
-                  }`}>
-                    <div className={`${step.color}`}>
-                      {React.cloneElement(step.icon, { size: 20 })}
+                  {/* Visual */}
+                  <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
+                    <div className={`bg-gradient-to-br p-8 rounded-2xl ${
+                      step.color === 'text-accent-green' ? 'from-accent-green/10 to-accent-green/5' :
+                      step.color === 'text-highlight-brown' ? 'from-highlight-brown/10 to-highlight-brown/5' :
+                      'from-primary/10 to-primary/5'
+                    }`}>
+                      <div className="bg-white rounded-xl shadow-lg p-6">
+                        <div className="text-center">
+                          <div className={`inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 ${step.bgColor} text-white`}>
+                            {step.icon}
+                          </div>
+                          <h4 className="font-semibold text-primary mb-2">{step.title}</h4>
+                          <p className="text-primary/70 text-sm mb-4">{step.duration}</p>
+                          <div className="bg-gradient-to-r from-sand-light/50 to-beige-gold/50 p-4 rounded-lg">
+                            <p className="text-primary/80 text-sm">
+                              {step.description}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
                     </div>
                   </div>
-
-                  {/* Step Number */}
                 </div>
               </div>
             ))}
