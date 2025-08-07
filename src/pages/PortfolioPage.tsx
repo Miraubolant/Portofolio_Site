@@ -130,11 +130,11 @@ const PortfolioPage: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-              Portfolio <span className="text-accent-green">Sites Autonomes</span>
+              <span className="text-accent-green">Portfolio</span> Réalisations Autonomes
             </h1>
             <p className="text-xl text-primary/80 max-w-3xl mx-auto">
-              Chaque projet livré avec interface admin simple + formation personnalisée = 
-              <span className="font-semibold text-accent-green"> Clients 100% autonomes</span>
+              150+ projets livrés avec interface admin simple + formation incluse = 
+              <span className="font-semibold text-accent-green">Clients 100% autonomes</span>
             </p>
           </div>
 
