@@ -9,8 +9,6 @@ import {
   TestTube, 
   GraduationCap,
   ArrowRight,
-  Clock,
-  CheckCircle,
   Target
 } from 'lucide-react';
 
@@ -84,7 +82,7 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
         }, index * 200);
       });
     }
-  }, [isVisible, processSteps.length]);
+  }, [isVisible]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -94,9 +92,8 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
         const elementTop = rect.top;
         const elementHeight = rect.height;
         
-        // Calculer le progrès basé sur la position de scroll
-        const startOffset = windowHeight * 0.8; // Commence quand l'élément est à 80% visible
-        const endOffset = -elementHeight + windowHeight * 0.2; // Finit quand l'élément sort à 20%
+        const startOffset = windowHeight * 0.8;
+        const endOffset = -elementHeight + windowHeight * 0.2;
         
         if (elementTop <= startOffset && elementTop >= endOffset) {
           const progress = (startOffset - elementTop) / (startOffset - endOffset);
@@ -110,10 +107,11 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Initial call
+    handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
   const handleDetailClick = () => {
     if (onDetailClick) {
       onDetailClick();
@@ -146,8 +144,8 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
 
         {/* Timeline */}
         <div ref={timelineRef} className="relative">
-          {/* Animated Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-accent-green/10 via-highlight-brown/10 to-accent-green/10 rounded-full hidden lg:block">
+          {/* Animated Timeline Line - Desktop Only */}
+          <div className="absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-accent-green/20 via-highlight-brown/20 to-accent-green/20 rounded-full hidden lg:block">
             <div 
               className="w-full bg-gradient-to-b from-accent-green via-highlight-brown to-accent-green rounded-full transition-all duration-300 ease-out"
               style={{ 
@@ -156,8 +154,6 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
               }}
             ></div>
           </div>
-          {/* Timeline Line */}
-          <div className="absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-accent-green/20 via-highlight-brown/20 to-accent-green/20 rounded-full hidden lg:block"></div>
 
           {/* Steps */}
           <div className="space-y-12 lg:space-y-20">
@@ -171,8 +167,8 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
-                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 hidden lg:block z-10">
+                {/* Timeline Node - Desktop Only */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 top-8 hidden lg:block z-10">
                   <div className={`w-12 h-12 rounded-full ${step.bgColor} text-white flex items-center justify-center shadow-lg transition-all duration-500 ${
                     scrollProgress >= (index + 1) / processSteps.length ? 'scale-110 shadow-2xl' : 'scale-100'
                   }`}>
@@ -180,23 +176,19 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                   </div>
                 </div>
 
-                <div className={`grid lg:grid-cols-2 gap-16 items-center ${
-                <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
-                }`}>
-                  {/* Content */}
-                  <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                {/* Content Grid */}
+                <div className="grid lg:grid-cols-2 gap-16 items-center">
+                  {/* Content Card */}
+                  <div className={index % 2 === 1 ? 'lg:order-2' : 'lg:order-1'}>
                     <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-lg p-8 border border-sand-light/30 hover:shadow-xl transition-all duration-300">
                       
                       {/* Step Header */}
                       <div className="flex items-center space-x-4 mb-6">
-                        <div className={`p-3 rounded-xl ${step.bgColor} text-white`}>
+                        <div className={`p-3 rounded-xl ${step.bgColor} text-white lg:hidden`}>
                           {step.icon}
                         </div>
                         <div>
                           <div className="flex items-center space-x-3 mb-2">
-                            <span className="bg-primary text-white px-3 py-1 rounded-full text-sm font-bold">
-                              Étape {index + 1}
-                            </span>
                             <span className={`px-3 py-1 rounded-full text-sm font-semibold text-white ${step.bgColor}`}>
                               {step.duration}
                             </span>
@@ -209,8 +201,8 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                     </div>
                   </div>
 
-                  {/* Visual */}
-                  <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
+                  {/* Visual Card */}
+                  <div className={index % 2 === 1 ? 'lg:order-1' : 'lg:order-2'}>
                     <div className={`bg-gradient-to-br p-8 rounded-2xl ${
                       step.color === 'text-accent-green' ? 'from-accent-green/10 to-accent-green/5' :
                       step.color === 'text-highlight-brown' ? 'from-highlight-brown/10 to-highlight-brown/5' :
