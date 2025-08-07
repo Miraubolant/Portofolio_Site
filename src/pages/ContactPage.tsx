@@ -89,7 +89,7 @@ const ContactPage: React.FC = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-16 bg-gradient-to-br from-sand-light via-beige-gold to-sand-light relative overflow-hidden">
+      <section className="pt-4 pb-12 md:pb-16 bg-gradient-to-br from-sand-light via-beige-gold to-sand-light relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-10 left-10 w-64 h-64 bg-accent-green/10 rounded-full blur-3xl animate-pulse-soft"></div>
           <div className="absolute bottom-10 right-10 w-80 h-80 bg-highlight-brown/10 rounded-full blur-3xl animate-pulse-soft" style={{ animationDelay: '1s' }}></div>
@@ -97,11 +97,11 @@ const ContactPage: React.FC = () => {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-              <span className="text-accent-green">Contact</span> Démarrons Votre Autonomie
+          <div className="text-center mb-8 md:mb-12">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
+              <span className="text-accent-green">Contact</span> Démarrons Votre <span className="text-highlight-brown">Autonomie</span>
             </h1>
-            <p className="text-xl text-primary/80 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-primary/80 max-w-3xl mx-auto">
               Site autonome + Interface simple + Formation incluse = Votre indépendance digitale.
               <span className="font-semibold text-accent-green"> Démarrons ensemble votre projet !</span>
             </p>
@@ -146,7 +146,7 @@ const ContactPage: React.FC = () => {
       </section>
 
       {/* Main Contact Section */}
-      <section className="py-16 bg-white relative overflow-hidden">
+      <section className="py-12 md:py-16 bg-white relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-48 h-48 bg-sand-light/20 rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-64 h-64 bg-beige-gold/20 rounded-full blur-3xl"></div>

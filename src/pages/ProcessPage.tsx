@@ -178,18 +178,18 @@ const ProcessPage: React.FC = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-sand-light via-beige-gold to-sand-light relative overflow-hidden">
+      <section className="pt-4 pb-12 md:pb-16 bg-gradient-to-br from-sand-light via-beige-gold to-sand-light relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-32 h-32 bg-accent-green/10 rounded-full blur-2xl"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-highlight-brown/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-              <span className="text-accent-green">Ma Méthode</span> Autonomie Express
+          <div className="text-center mb-8 md:mb-12">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
+              <span className="text-accent-green">Ma Méthode</span> <span className="text-highlight-brown">Autonomie</span> Express
             </h1>
-            <p className="text-xl text-primary/80 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-primary/80 max-w-3xl mx-auto">
               Processus éprouvé en 6 étapes pour votre autonomie digitale complète.
               <span className="font-semibold text-accent-green"> Formation personnalisée jusqu'à maîtrise totale.</span>
             </p>
@@ -198,7 +198,7 @@ const ProcessPage: React.FC = () => {
       </section>
 
       {/* Process Timeline Detailed */}
-      <section ref={elementRef} className="py-20 bg-white">
+      <section ref={elementRef} className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="space-y-20">
             {processSteps.map((step, index) => (

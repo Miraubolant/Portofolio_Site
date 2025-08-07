@@ -35,7 +35,7 @@ const Presentation: React.FC = () => {
   };
 
   return (
-    <section ref={elementRef} className="py-16 bg-white relative overflow-hidden">
+    <section ref={elementRef} className="py-12 md:py-16 bg-white relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute top-10 right-10 w-48 h-48 bg-sand-light rounded-full blur-3xl opacity-50"></div>
       <div className="absolute bottom-10 left-10 w-64 h-64 bg-beige-gold/30 rounded-full blur-3xl opacity-50"></div>
@@ -54,7 +54,7 @@ const Presentation: React.FC = () => {
 
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6 leading-tight">
               Interface simple -<br />
-              <span className="text-accent-green">Vous gérez votre contenu</span><br />
+              <span className="text-accent-green">Vous gérez</span> votre <span className="text-highlight-brown">contenu</span><br />
               <span className="text-highlight-brown">en autonomie</span>
             </h2>
 

@@ -60,7 +60,7 @@ const PremiumInterfaceDemo: React.FC = () => {
   };
 
   return (
-    <section ref={elementRef} className="py-16 bg-gradient-to-br from-sand-light to-beige-gold relative overflow-hidden">
+    <section ref={elementRef} className="py-12 md:py-16 bg-gradient-to-br from-sand-light to-beige-gold relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-accent-green/5 via-transparent to-highlight-brown/5"></div>
@@ -70,8 +70,8 @@ const PremiumInterfaceDemo: React.FC = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Votre site, <span className="text-accent-green">votre autonomie</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
+            Votre <span className="text-accent-green">site</span>, votre <span className="text-highlight-brown">autonomie</span>
           </h2>
           <p className="text-xl text-primary/80 max-w-3xl mx-auto mb-8">
             Plus besoin de développeur pour vos mises à jour quotidiennes. 

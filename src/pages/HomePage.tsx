@@ -1,8 +1,8 @@
 import React from 'react';
 import Hero from '../components/Hero';
 import Presentation from '../components/Presentation';
-import PremiumInterfaceDemo from '../components/PremiumInterfaceDemo';
 import ProcessTimeline from '../components/ProcessTimeline';
+import PremiumInterfaceDemo from '../components/PremiumInterfaceDemo';
 import PortfolioPreview from '../components/PortfolioPreview';
 import AvailabilitySection from '../components/AvailabilitySection';
 import FinalCTA from '../components/FinalCTA';
@@ -19,7 +19,7 @@ const HomePage: React.FC<HomePageProps> = ({
   onPortfolioViewAllClick
 }) => {
   return (
-    <>
+    <div className="overflow-x-hidden">
       <Hero onCtaClick={onHeroCtaClick} />
       <Presentation />
       <div id="process-timeline">
@@ -29,7 +29,7 @@ const HomePage: React.FC<HomePageProps> = ({
       <PortfolioPreview onViewAllClick={onPortfolioViewAllClick} />
       <AvailabilitySection />
       <FinalCTA />
-    </>
+    </div>
   );
 };
 

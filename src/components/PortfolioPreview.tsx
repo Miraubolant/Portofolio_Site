@@ -131,7 +131,7 @@ const PortfolioPreview: React.FC<PortfolioPreviewProps> = ({ onViewAllClick }) =
   const currentProject = projects[currentSlide];
 
   return (
-    <section ref={elementRef} className="py-20 bg-gradient-to-br from-beige-gold/30 to-sand-light relative overflow-hidden">
+    <section ref={elementRef} className="py-12 md:py-16 bg-gradient-to-br from-beige-gold/30 to-sand-light relative overflow-hidden">
       {/* Background Decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-10 right-10 w-64 h-64 bg-accent-green/10 rounded-full blur-3xl animate-pulse-soft"></div>
@@ -144,8 +144,8 @@ const PortfolioPreview: React.FC<PortfolioPreviewProps> = ({ onViewAllClick }) =
         <div className={`text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Mes réalisations <span className="text-accent-green">autonomes</span>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
+            Mes <span className="text-accent-green">réalisations</span> <span className="text-highlight-brown">autonomes</span>
           </h2>
           <p className="text-xl text-primary/80 max-w-3xl mx-auto mb-8">
             Chaque projet livré avec son interface admin simple et sa formation personnalisée

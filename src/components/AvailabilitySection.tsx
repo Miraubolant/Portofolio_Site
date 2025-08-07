@@ -33,7 +33,7 @@ const AvailabilitySection: React.FC = () => {
   ];
 
   return (
-    <section ref={elementRef} className="py-16 bg-white relative overflow-hidden">
+    <section ref={elementRef} className="py-12 md:py-16 bg-white relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute top-10 left-10 w-64 h-64 bg-accent-green/5 rounded-full blur-3xl"></div>
@@ -44,8 +44,8 @@ const AvailabilitySection: React.FC = () => {
         <div className={`text-center mb-16 transition-all duration-1000 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
         }`}>
-          <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-            Mes <span className="text-accent-green">compétences</span> pour votre autonomie
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-6">
+            Mes <span className="text-accent-green">compétences</span> pour votre <span className="text-highlight-brown">autonomie</span>
           </h2>
           <p className="text-xl text-primary/80 max-w-3xl mx-auto">
             Expertise technique + pédagogie personnalisée = votre autonomie digitale garantie

@@ -110,18 +110,18 @@ const BlogPage: React.FC = () => {
   return (
     <div className="pt-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-br from-sand-light via-beige-gold to-sand-light relative overflow-hidden">
+      <section className="pt-4 pb-12 md:pb-16 bg-gradient-to-br from-sand-light via-beige-gold to-sand-light relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-20 left-20 w-32 h-32 bg-accent-green/10 rounded-full blur-2xl"></div>
           <div className="absolute bottom-20 right-20 w-48 h-48 bg-highlight-brown/10 rounded-full blur-3xl"></div>
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-16">
-            <h1 className="text-4xl md:text-6xl font-bold text-primary mb-6">
-              <span className="text-accent-green">Blog</span> Autonomie Digitale
+          <div className="text-center mb-8 md:mb-12">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-primary mb-4">
+              <span className="text-accent-green">Blog</span> Autonomie <span className="text-highlight-brown">Digitale</span>
             </h1>
-            <p className="text-xl text-primary/80 max-w-3xl mx-auto">
+            <p className="text-base md:text-lg text-primary/80 max-w-3xl mx-auto">
               Conseils exclusifs, méthodes éprouvées et retours d'expérience pour votre autonomie web. 
               <span className="font-semibold text-accent-green">Devenez maître de votre site !</span>
             </p>
@@ -166,7 +166,7 @@ const BlogPage: React.FC = () => {
       </section>
 
       {/* Featured Posts */}
-      <section className="py-20 bg-white">
+      <section className="py-12 md:py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-primary mb-12 text-center">
             Articles <span className="text-accent-green">À la Une</span>

@@ -4,7 +4,7 @@ import ContactForm from './ContactForm';
 
 const FinalCTA: React.FC = () => {
   return (
-    <section className="py-16 bg-gradient-to-br from-primary to-accent-green relative overflow-hidden">
+    <section className="py-12 md:py-16 bg-gradient-to-br from-primary to-accent-green relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0">
         <div className="absolute top-10 right-20 w-32 h-32 bg-white/10 rounded-full blur-2xl"></div>
@@ -15,8 +15,8 @@ const FinalCTA: React.FC = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left Column - CTA Content */}
           <div className="text-white">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-              Votre site <span className="text-sand-light">autonome</span> rapidement ?
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 leading-tight">
+              Votre <span className="text-sand-light">site</span> <span className="text-beige-gold">autonome</span> rapidement ?
             </h2>
             
             <div className="space-y-4 mb-8">
