@@ -171,7 +171,7 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
-                {/* Timeline Node */}
+                <div className={`${index % 2 === 1 ? 'lg:col-start-2' : ''}`}>
                 <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 hidden lg:block z-10">
                   <div className={`w-12 h-12 rounded-full ${step.bgColor} text-white flex items-center justify-center shadow-lg transition-all duration-500 ${
                     scrollProgress >= (index + 1) / processSteps.length ? 'scale-110 shadow-2xl' : 'scale-100'
@@ -181,7 +181,7 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                 </div>
 
                 <div className={`grid lg:grid-cols-2 gap-16 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                <div className={`${index % 2 === 1 ? 'lg:col-start-1' : ''}`}>
                 }`}>
                   {/* Content */}
                   <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>

@@ -250,7 +250,7 @@ const ContactPage: React.FC = () => {
                 href="https://wa.me/33123456789"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center justify-center space-x-3 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-105 font-semibold"
+                className="flex items-center justify-center space-x-3 bg-accent-green text-white px-6 py-3 rounded-lg hover:bg-accent-green/90 transition-all duration-300 transform hover:scale-105 font-semibold"
               >
                 <MessageCircle size={20} />
                 <span>WhatsApp</span>
@@ -317,7 +317,7 @@ const ContactPage: React.FC = () => {
               href="https://wa.me/33123456789"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center space-x-3 bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 transition-all duration-300 transform hover:scale-105 font-semibold"
+              className="flex items-center justify-center space-x-3 bg-accent-green text-white px-6 py-3 rounded-lg hover:bg-accent-green/90 transition-all duration-300 transform hover:scale-105 font-semibold"
             >
               <MessageCircle size={20} />
               <span>Démarrer maintenant</span>
