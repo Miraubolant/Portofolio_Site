@@ -22,10 +22,10 @@ const HomePage: React.FC<HomePageProps> = ({
     <>
       <Hero onCtaClick={onHeroCtaClick} />
       <Presentation />
-      <PremiumInterfaceDemo />
       <div id="process-timeline">
         <ProcessTimeline onDetailClick={onProcessDetailClick} />
       </div>
+      <PremiumInterfaceDemo />
       <PortfolioPreview onViewAllClick={onPortfolioViewAllClick} />
       <AvailabilitySection />
       <FinalCTA />

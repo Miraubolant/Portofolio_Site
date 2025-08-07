@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { 
@@ -22,6 +22,8 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
   const { elementRef, isVisible } = useIntersectionObserver();
   const navigate = useNavigate();
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const timelineRef = useRef<HTMLDivElement>(null);
 
   const processSteps = [
     {
@@ -84,6 +86,34 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
     }
   }, [isVisible, processSteps.length]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      if (timelineRef.current) {
+        const rect = timelineRef.current.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const elementTop = rect.top;
+        const elementHeight = rect.height;
+        
+        // Calculer le progrès basé sur la position de scroll
+        const startOffset = windowHeight * 0.8; // Commence quand l'élément est à 80% visible
+        const endOffset = -elementHeight + windowHeight * 0.2; // Finit quand l'élément sort à 20%
+        
+        if (elementTop <= startOffset && elementTop >= endOffset) {
+          const progress = (startOffset - elementTop) / (startOffset - endOffset);
+          setScrollProgress(Math.min(Math.max(progress, 0), 1));
+        } else if (elementTop > startOffset) {
+          setScrollProgress(0);
+        } else if (elementTop < endOffset) {
+          setScrollProgress(1);
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll(); // Initial call
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
   const handleDetailClick = () => {
     if (onDetailClick) {
       onDetailClick();
@@ -115,7 +145,17 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
         </div>
 
         {/* Timeline */}
-        <div className="relative">
+        <div ref={timelineRef} className="relative">
+          {/* Animated Timeline Line */}
+          <div className="absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-accent-green/10 via-highlight-brown/10 to-accent-green/10 rounded-full hidden lg:block">
+            <div 
+              className="w-full bg-gradient-to-b from-accent-green via-highlight-brown to-accent-green rounded-full transition-all duration-300 ease-out"
+              style={{ 
+                height: `${scrollProgress * 100}%`,
+                boxShadow: scrollProgress > 0 ? '0 0 20px rgba(93, 112, 82, 0.5)' : 'none'
+              }}
+            ></div>
+          </div>
           {/* Timeline Line */}
           <div className="absolute left-1/2 transform -translate-x-px h-full w-1 bg-gradient-to-b from-accent-green/20 via-highlight-brown/20 to-accent-green/20 rounded-full hidden lg:block"></div>
 
@@ -131,6 +171,15 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
                 }`}
                 style={{ transitionDelay: `${index * 200}ms` }}
               >
+                {/* Timeline Node */}
+                <div className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2 top-1/2 hidden lg:block z-10">
+                  <div className={`w-12 h-12 rounded-full ${step.bgColor} text-white flex items-center justify-center shadow-lg transition-all duration-500 ${
+                    scrollProgress >= (index + 1) / processSteps.length ? 'scale-110 shadow-2xl' : 'scale-100'
+                  }`}>
+                    {step.icon}
+                  </div>
+                </div>
+
                 <div className={`grid lg:grid-cols-2 gap-16 items-center ${
                   index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                 }`}>
