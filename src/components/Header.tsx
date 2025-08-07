@@ -17,6 +17,10 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
   useEffect(() => {
     // Reset scroll state when location changes
     setIsScrolled(false);
+    setScrollProgress(0);
+    
+    // Force scroll to top to ensure transparent state
+    window.scrollTo(0, 0);
     
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
