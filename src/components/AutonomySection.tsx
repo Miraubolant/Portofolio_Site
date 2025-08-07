@@ -5,6 +5,7 @@ import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 const AutonomySection: React.FC = () => {
   const { elementRef, isVisible } = useIntersectionObserver();
   const [activeDemo, setActiveDemo] = useState(0);
+  const [mobileView, setMobileView] = useState(false);
 
   const demoFeatures = [
     {
@@ -76,30 +77,48 @@ const AutonomySection: React.FC = () => {
                   <h3 className="font-semibold text-primary">Dashboard Principal</h3>
                   <div className="flex space-x-2">
                     <Monitor className="text-accent-green" size={20} />
-                    <Smartphone className="text-primary/50" size={20} />
+                    <button
+                      onClick={() => setMobileView(!mobileView)}
+                      className={`p-1 rounded transition-all duration-300 hover:scale-110 ${
+                        mobileView 
+                          ? 'text-accent-green bg-accent-green/10' 
+                          : 'text-primary/50 hover:text-accent-green'
+                      }`}
+                      title={mobileView ? 'Vue Desktop' : 'Vue Mobile'}
+                    >
+                      <Smartphone size={20} />
+                    </button>
                   </div>
                 </div>
 
                 {/* Animated Demo Features */}
-                <div className="space-y-4">
+                <div className={`transition-all duration-500 ${
+                  mobileView ? 'space-y-2' : 'space-y-4'
+                }`}>
                   {demoFeatures.map((feature, index) => (
                     <div
                       key={index}
-                      className={`p-4 rounded-lg border-2 transition-all duration-500 ${
+                      className={`${mobileView ? 'p-3' : 'p-4'} rounded-lg border-2 transition-all duration-500 ${
                         activeDemo === index
                           ? 'border-accent-green bg-accent-green/5 scale-105'
                           : 'border-gray-200 bg-gray-50'
                       }`}
                     >
-                      <div className="flex items-center space-x-3">
+                      <div className={`flex items-center ${mobileView ? 'space-x-2' : 'space-x-3'}`}>
                         <div className={`p-2 rounded-lg ${
                           activeDemo === index ? 'bg-accent-green text-white' : 'bg-gray-200 text-primary'
                         }`}>
-                          {feature.icon}
+                          <div className={mobileView ? 'scale-75' : ''}>
+                            {feature.icon}
+                          </div>
                         </div>
                         <div>
-                          <h4 className="font-semibold text-primary">{feature.title}</h4>
-                          <p className="text-primary/70 text-sm">{feature.description}</p>
+                          <h4 className={`font-semibold text-primary ${mobileView ? 'text-sm' : ''}`}>
+                            {feature.title}
+                          </h4>
+                          <p className={`text-primary/70 ${mobileView ? 'text-xs' : 'text-sm'}`}>
+                            {feature.description}
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -107,10 +126,14 @@ const AutonomySection: React.FC = () => {
                 </div>
 
                 {/* Demo Video Placeholder */}
-                <div className="mt-6 bg-gradient-to-br from-primary/5 to-accent-green/5 rounded-lg p-8 text-center">
-                  <Play className="text-accent-green mx-auto mb-3" size={48} />
-                  <p className="text-primary font-medium mb-2">Démo en action</p>
-                  <p className="text-primary/70 text-sm">Voyez comme c'est simple !</p>
+                <div className={`${mobileView ? 'mt-4' : 'mt-6'} bg-gradient-to-br from-primary/5 to-accent-green/5 rounded-lg ${mobileView ? 'p-4' : 'p-8'} text-center`}>
+                  <Play className="text-accent-green mx-auto mb-3" size={mobileView ? 32 : 48} />
+                  <p className={`text-primary font-medium mb-2 ${mobileView ? 'text-sm' : ''}`}>
+                    {mobileView ? 'Démo Mobile' : 'Démo en action'}
+                  </p>
+                  <p className={`text-primary/70 ${mobileView ? 'text-xs' : 'text-sm'}`}>
+                    {mobileView ? 'Interface adaptée' : 'Voyez comme c\'est simple !'}
+                  </p>
                 </div>
               </div>
             </div>

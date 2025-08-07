@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { useEffect, useRef } from 'react';
 import { trackWebVitals, preloadImages } from './utils/performance';
 import AnalyticsTracker from './components/AnalyticsTracker';
 import Header from './components/Header';
@@ -11,6 +11,17 @@ import ProcessPage from './pages/ProcessPage';
 import BlogPage from './pages/BlogPage';
 import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer';
+
+// Component to scroll to top on route change
+const ScrollToTop: React.FC = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+};
 
 function App() {
   const [activeSection, setActiveSection] = useState('home');
@@ -65,6 +76,7 @@ function App() {
     <Router>
       <div className="min-h-screen bg-white">
         <AnalyticsTracker />
+        <ScrollToTop />
         <Header activeSection={activeSection} onSectionChange={handleSectionChange} />
         
         <Routes>
