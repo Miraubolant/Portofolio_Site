@@ -11,11 +11,18 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const location = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+      
+      // Calculate scroll progress
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = Math.min(scrollTop / docHeight, 1);
+      setScrollProgress(progress);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -45,8 +52,12 @@ const Header: React.FC<HeaderProps> = ({ activeSection, onSectionChange }) => {
               <span className="text-white font-bold text-lg">VM</span>
             </div>
             <div>
-              <span className="font-bold text-xl text-primary bg-gradient-to-r from-accent-green/10 to-highlight-brown/10 px-3 py-1 rounded-lg border border-accent-green/20">
+              <span className="font-bold text-xl text-primary relative inline-block">
                 Victor Mirault
+                <span 
+                  className="absolute bottom-0 left-0 h-0.5 bg-gradient-to-r from-accent-green to-highlight-brown transition-all duration-300 ease-out"
+                  style={{ width: `${20 + scrollProgress * 80}%` }}
+                ></span>
               </span>
               <p className="text-sm text-primary/70 mt-1">Sites autonomes express</p>
             </div>
