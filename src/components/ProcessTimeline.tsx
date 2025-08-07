@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useIntersectionObserver } from '../hooks/useIntersectionObserver';
 import { 
   MessageSquare, 
@@ -11,11 +12,12 @@ import {
 } from 'lucide-react';
 
 interface ProcessTimelineProps {
-  onDetailClick: () => void;
+  onDetailClick?: () => void;
 }
 
 const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
   const { elementRef, isVisible } = useIntersectionObserver();
+  const navigate = useNavigate();
   const [visibleSteps, setVisibleSteps] = useState<number[]>([]);
   const [expandedStep, setExpandedStep] = useState<number | null>(null);
 
@@ -104,6 +106,14 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
       });
     }
   }, [isVisible]);
+
+  const handleDetailClick = () => {
+    if (onDetailClick) {
+      onDetailClick();
+    } else {
+      navigate('/processus');
+    }
+  };
 
   return (
     <section ref={elementRef} className="py-16 bg-gradient-to-br from-sand-light/20 via-white to-beige-gold/20 relative overflow-hidden">
@@ -263,7 +273,7 @@ const ProcessTimeline: React.FC<ProcessTimelineProps> = ({ onDetailClick }) => {
             </p>
           </div>
           <button
-            onClick={onDetailClick}
+            onClick={handleDetailClick}
             className="group bg-gradient-to-r from-accent-green to-highlight-brown text-white px-10 py-5 rounded-2xl text-xl font-bold hover:shadow-2xl transition-all duration-500 transform hover:scale-110 hover:-translate-y-1"
           >
             <span className="mr-3">🚀</span>
